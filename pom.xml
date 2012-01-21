@@ -10,7 +10,6 @@
 	<properties>
 		<java-version>1.6</java-version>
 		<org.springframework.social-version>1.0.2.BUILD-SNAPSHOT</org.springframework.social-version>
-		<org.springframework.social.facebook-version>1.0.2.BUILD-SNAPSHOT</org.springframework.social.facebook-version>
 		<org.springframework.social.twitter-version>1.0.2.BUILD-SNAPSHOT</org.springframework.social.twitter-version>
 		<org.springframework-version>3.1.0.RELEASE</org.springframework-version>
 		<org.springframework.security-version>3.1.0.RELEASE</org.springframework.security-version>
@@ -64,11 +63,6 @@
 		    <groupId>org.springframework.social</groupId>
 		    <artifactId>spring-social-core</artifactId>
 	        <version>${org.springframework.social-version}</version>
-	    </dependency>
-		<dependency>
-		    <groupId>org.springframework.social</groupId>
-		    <artifactId>spring-social-facebook</artifactId>
-	        <version>${org.springframework.social.facebook-version}</version>
 	    </dependency>
 		<dependency>
 		    <groupId>org.springframework.social</groupId>

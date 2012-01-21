@@ -15,13 +15,3 @@
 	<li><a href="<c:url value="/twitter/trends/daily"/>">Daily Trends</a></li>
 </ul>
 </social:connected>
-
-<h4><a href="<c:url value="/facebook"/>">Facebook</a></h4>
-<social:connected provider="facebook">
-<ul class="menu">
-	<li><a href="<c:url value="/facebook"/>">User Profile</a></li>
-	<li><a href="<c:url value="/facebook/feed"/>">Feed</a></li>
-	<li><a href="<c:url value="/facebook/friends"/>">Friends</a></li>
-	<li><a href="<c:url value="/facebook/albums"/>">Albums</a></li>
-</ul>
-</social:connected>
