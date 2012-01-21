@@ -15,7 +15,6 @@
  */
 package org.springframework.social.showcase.config;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -68,8 +67,8 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 		tilesViewResolver.setViewClass(TilesView.class);
 		
 		List<ViewResolver> viewResolvers =  Lists.newArrayList();
-		//viewResolvers.add(htmlViewResolver);
-		viewResolvers.add(tilesViewResolver);
+		viewResolvers.add(htmlViewResolver);
+		//viewResolvers.add(tilesViewResolver);
 				
 		viewResolver.setViewResolvers(viewResolvers);
 		

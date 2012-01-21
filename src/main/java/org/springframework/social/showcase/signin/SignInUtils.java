@@ -27,4 +27,8 @@ public class SignInUtils {
 		SecurityContextHolder.getContext().setAuthentication(new UsernamePasswordAuthenticationToken(userId, null, null));	
 	}
 	
+	public static boolean isSignedIn() {
+		return SecurityContextHolder.getContext().getAuthentication() != null;
+	}
+	
 }

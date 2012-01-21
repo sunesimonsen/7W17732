@@ -16,15 +16,22 @@
 package org.springframework.social.showcase;
 
 import java.security.Principal;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.inject.Provider;
 
+import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.showcase.account.AccountRepository;
+import org.springframework.social.showcase.signin.SignInUtils;
+import org.springframework.social.twitter.api.Twitter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.google.common.collect.Maps;
 
 @Controller
 public class HomeController {
@@ -32,6 +39,7 @@ public class HomeController {
 	private final Provider<ConnectionRepository> connectionRepositoryProvider;
 	
 	private final AccountRepository accountRepository;
+	
 
 	@Inject
 	public HomeController(Provider<ConnectionRepository> connectionRepositoryProvider, AccountRepository accountRepository) {
@@ -40,10 +48,34 @@ public class HomeController {
 	}
 
 	@RequestMapping("/")
-	public String home(Principal currentUser, Model model) {
-		model.addAttribute("connectionsToProviders", getConnectionRepository().findAllConnections());
-		model.addAttribute(accountRepository.findAccountByUsername(currentUser.getName()));
-		return "home";
+	public String home() {
+		return "forward:/resources/index.html";
+	}
+	
+	@RequestMapping("/home.json")
+	public HomeModel home(Principal currentUser) {
+		HomeModel model = new HomeModel("7W17732");
+		if (isConnectToTwitter()) {
+			if (currentUser == null) {
+				model.addAction("signin", "signin.json", RequestMethod.POST, "Sign into the application");
+			} else {
+				model.addAction("signout", "signout.json", RequestMethod.GET, "Sign out of the application");
+			}
+		} else {
+			model.addAction("twitter-connect", "signin/twitter", RequestMethod.POST, "Connect to Twitter");
+		}
+		
+		return model;
+	}
+	
+	private boolean isConnectToTwitter() {
+		Connection<Twitter> connection = getConnectionRepository().findPrimaryConnection(Twitter.class);
+		return connection != null;
+	}
+	
+	@RequestMapping("/connect.json")
+	public String connect() {
+		return "";
 	}
 	
 	private ConnectionRepository getConnectionRepository() {

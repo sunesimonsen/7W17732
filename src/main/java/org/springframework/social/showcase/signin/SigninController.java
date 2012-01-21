@@ -19,12 +19,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.util.UriTemplate;
 
 import com.google.common.collect.Maps;
 
@@ -37,8 +34,8 @@ public class SigninController {
 	
 	@RequestMapping(value="/signin.json", method=RequestMethod.GET)
 	public Map<String, String> signinJson(HttpServletRequest request) {
-		Map<String, String> result = Maps.newHashMap();
-		result.put("Hello", request.getContextPath() + "/signin/twitter");
-		return result ;
+		Map<String, String> model = Maps.newHashMap();
+		model.put("Hello", request.getContextPath() + "/signin/twitter");
+		return model;
 	}
 }
