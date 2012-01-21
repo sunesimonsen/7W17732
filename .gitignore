@@ -1,0 +1,12 @@
+.classpath
+.project
+.settings
+/.emacs.desktop
+/.emacs.desktop.lock
+*~
+\#*#
+target
+*.DS_Store
+doc
+TAGS
+tags
