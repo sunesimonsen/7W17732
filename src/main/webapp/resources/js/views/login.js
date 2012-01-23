@@ -2,6 +2,9 @@ var tw = window.TW || {};
 tw.login = tw.login || (function() {
 	return {
 		init : function() {
+			$("#login-view > div").hide();
+			$("#login-view").show();
+			
 			$("#loginFormName input[type=submit]").click(function() {
 				$.ajax({
 					url : "signin/authenticate",
