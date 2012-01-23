@@ -4,13 +4,12 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>7W17732</title>
 	
-	<link rel="stylesheet" href="css/blueprint/screen.css" type="text/css" media="screen, projection">
-	<link rel="stylesheet" href="css/blueprint/print.css" type="text/css" media="print"> 
+	<link rel="stylesheet" href="resources/css/blueprint/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="resources/css/blueprint/print.css" type="text/css" media="print"> 
   	<!--[if lt IE 8]>
-    	<link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection">
+  		<link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection">
   	<![endif]-->
 	
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 </head>
 <body>
 	<!-- TWITTER SIGNIN -->
@@ -35,29 +34,7 @@
 		<li>rclarkson/atlanta</li>
 	</ul>
 	
-	<script type="text/javascript">
-	
-	$(document).ready(function() {
-		
-		$("#loginFormName input[type=submit]").click(function () {
-			$.ajax({
-			    url: "signin/authenticate",
-			    type: "POST",
-			    data: $("#loginFormName").serialize(),
-			    beforeSend: function (xhr) {
-			        xhr.setRequestHeader("X-Ajax-call", "true");
-			    },
-			    success: function(result) {
-			        if (result == "ok") {
-			            console.log("Success");
-			        } else if (result == "error") {
-			        	console.log("Error");
-			        }
-			    }
-			});
-			return false;
-		});
-	});
-	</script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="resources/js/script.js"></script>	
 </body>
 </html>
