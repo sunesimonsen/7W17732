@@ -88,14 +88,16 @@ public class SocialConfig {
 	
 	@Bean
 	public ConnectController connectController() {
-		ConnectController connectController = new ConnectController(connectionFactoryLocator(), connectionRepository());
-		connectController.addInterceptor(new TweetAfterConnectInterceptor());
-		return connectController;
+		return new ConnectController(connectionFactoryLocator(), connectionRepository());
 	}
 
 	@Bean
 	public ProviderSignInController providerSignInController(RequestCache requestCache) {
-		return new ProviderSignInController(connectionFactoryLocator(), usersConnectionRepository(), new SimpleSignInAdapter(requestCache));
+		ProviderSignInController providerSignInController = new ProviderSignInController(connectionFactoryLocator(), usersConnectionRepository(), new SimpleSignInAdapter(requestCache));
+		providerSignInController.setSignInUrl("/");
+		providerSignInController.setSignUpUrl("/");
+		providerSignInController.setPostSignInUrl("/");
+		return providerSignInController;
 	}
 
 }

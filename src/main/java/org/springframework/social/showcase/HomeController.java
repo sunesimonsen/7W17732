@@ -52,17 +52,21 @@ public class HomeController {
 		return "forward:/resources/index.html";
 	}
 	
+	@RequestMapping("/index.html")
+	public String index() {
+		return "forward:/resources/page.css";
+	}
+	
 	@RequestMapping("/home.json")
 	public HomeModel home(Principal currentUser) {
 		HomeModel model = new HomeModel("7W17732");
-		if (isConnectToTwitter()) {
-			if (currentUser == null) {
-				model.addAction("signin", "signin.json", RequestMethod.POST, "Sign into the application");
-			} else {
-				model.addAction("signout", "signout.json", RequestMethod.GET, "Sign out of the application");
-			}
+		if (currentUser == null) {
+			model.addAction("signin", "signin.json", RequestMethod.POST, "Sign into the application");
 		} else {
-			model.addAction("twitter-connect", "signin/twitter", RequestMethod.POST, "Connect to Twitter");
+			if (isConnectToTwitter()) {
+				model.addAction("twitter-connect", "connect/twitter", RequestMethod.POST, "Connect to Twitter");
+			}
+			model.addAction("signout", "signout.json", RequestMethod.GET, "Sign out of the application");
 		}
 		
 		return model;

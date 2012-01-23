@@ -17,8 +17,8 @@ package org.springframework.social.showcase.signin;
 
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,15 +27,13 @@ import com.google.common.collect.Maps;
 
 @Controller
 public class SigninController {
-
-	@RequestMapping(value="/signin", method=RequestMethod.GET)
-	public void signin() {
-	}
+	@Autowired
+	AuthenticationManager authenticationManager;
 	
-	@RequestMapping(value="/signin.json", method=RequestMethod.GET)
-	public Map<String, String> signinJson(HttpServletRequest request) {
-		Map<String, String> model = Maps.newHashMap();
-		model.put("Hello", request.getContextPath() + "/signin/twitter");
-		return model;
+	@RequestMapping(value="/secret.json", method = RequestMethod.GET)
+	public Map<String,String> secret() {
+		Map<String, String> result = Maps.newHashMap();
+		result.put("secret", "jubibiii");
+		return result ;
 	}
 }

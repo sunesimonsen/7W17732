@@ -18,16 +18,12 @@ package org.springframework.social.showcase.signup;
 import javax.inject.Inject;
 import javax.validation.Valid;
 
-import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.web.ProviderSignInUtils;
 import org.springframework.social.showcase.account.Account;
 import org.springframework.social.showcase.account.AccountRepository;
 import org.springframework.social.showcase.account.UsernameAlreadyInUseException;
-import org.springframework.social.showcase.message.Message;
-import org.springframework.social.showcase.message.MessageType;
 import org.springframework.social.showcase.signin.SignInUtils;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -42,7 +38,8 @@ public class SignupController {
 	public SignupController(AccountRepository accountRepository) {
 		this.accountRepository = accountRepository;
 	}
-
+	
+	/*
 	@RequestMapping(value="/signup", method=RequestMethod.GET)
 	public SignupForm signupForm(WebRequest request) {
 		Connection<?> connection = ProviderSignInUtils.getConnection(request);
@@ -53,7 +50,7 @@ public class SignupController {
 			return new SignupForm();
 		}
 	}
-
+*/
 	@RequestMapping(value="/signup", method=RequestMethod.POST)
 	public String signup(@Valid SignupForm form, BindingResult formBinding, WebRequest request) {
 		if (formBinding.hasErrors()) {
