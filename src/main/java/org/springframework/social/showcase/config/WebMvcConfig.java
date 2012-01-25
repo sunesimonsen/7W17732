@@ -37,6 +37,7 @@ import org.springframework.web.servlet.view.json.MappingJacksonJsonView;
 import org.springframework.web.servlet.view.tiles2.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles2.TilesView;
 
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 
@@ -71,7 +72,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 		//viewResolvers.add(tilesViewResolver);
 				
 		viewResolver.setViewResolvers(viewResolvers);
-		
+
 		List<View> defaultViews = Lists.newArrayList();
 		defaultViews.add(new MappingJacksonJsonView());
 		viewResolver.setDefaultViews(defaultViews);
