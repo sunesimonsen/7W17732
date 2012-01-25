@@ -48,28 +48,16 @@ public class HomeController {
 	}
 
 	@RequestMapping("/")
-	public String home() {
+	public String index() {
 		return "forward:/resources/index.html";
 	}
 	
-	@RequestMapping("/index.html")
-	public String index() {
-		return "forward:/resources/page.css";
-	}
-	
 	@RequestMapping("/home.json")
-	public HomeModel home(Principal currentUser) {
-		HomeModel model = new HomeModel("7W17732");
-		if (currentUser == null) {
-			model.addAction("signin", "signin.json", RequestMethod.POST, "Sign into the application");
-		} else {
-			if (isConnectToTwitter()) {
-				model.addAction("twitter-connect", "connect/twitter", RequestMethod.POST, "Connect to Twitter");
-			}
-			model.addAction("signout", "signout.json", RequestMethod.GET, "Sign out of the application");
-		}
-		
-		return model;
+	public Map<String,Object> home() {
+		Map<String,Object> result = Maps.newHashMap();
+		result.put("authenticated", SignInUtils.isSignedIn());
+		result.put("connected", isConnectToTwitter());
+		return result;
 	}
 	
 	private boolean isConnectToTwitter() {

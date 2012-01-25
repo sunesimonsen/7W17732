@@ -1,6 +1,6 @@
 define([
-    'views/login'
-], function(login){
+    'require'
+], function(require){
     var fetchSession = function(callback) {
         var that = this;
         
@@ -23,27 +23,22 @@ define([
             '*actions': 'defaultAction'
         },
         showLogin: function(){
-            // Call render on the module we loaded in via the dependency array
-            // 'views/projects/list'
-            login.render();
+            require(['views/login'], function (loginView) {
+                loginView.render();
+            });
         },
         showConnect : function () {
-            
+            require(['views/connect'], function (connectView) {
+                connectView.render();
+            });
         },
         defaultAction: function(actions){
             var that = this;
             
-            fetchSession(function (data) {
-
-                var hasRelation = function (relation) {
-                    return function (action) {
-                        return relation === action.relation;
-                    };
-                };
-                
-                if (_.any(data.homeModel.actions, hasRelation("signin"))) {
+            fetchSession(function (data) {                
+                if (!data.authenticated) {
                     that.navigate("login", true);
-                } else {
+                } else if (!data.connected) {
                     that.navigate("connect", true);
                 }
             });

@@ -6,37 +6,49 @@ define([
     var LoginView = Backbone.View.extend({
 
         el: '#container',
-        
+
         events: {
             'click input[type=submit]' : 'click'
         },
 
         render: function() {
             $(this.el).empty();
-            
+
             // Using Underscore we can compile our template with data
             var data = {};
             var compiledTemplate = _.template( template, data );
-            // Append our compiled template to this Views "el"
+                // Append our compiled template to this Views "el"
             $(this.el).append( compiledTemplate );
         },
 
         click : function () {
+            var that = this;
             $.ajax({
-		url : "signin/authenticate",
-		type : "POST",
-		data : this.$("form").serialize(),
-		beforeSend : function(xhr) {
-		    xhr.setRequestHeader("X-Ajax-call", "true");
-		},
-		success : function(data, textStatus, jqXHR) {
-                    require("router").navigate("connect", true);
-		},
+                url : "signin/authenticate",
+                type : "POST",
+                data : that.$("form").serialize(),
+                beforeSend : function(xhr) {
+                    xhr.setRequestHeader("X-Ajax-call", "true");
+                },
+                success : function(data, textStatus, jqXHR) {
+                    if (data === "success") {
+                        require("router").navigate("connect", true);
+                    } else {
+                        that.setErrorMessage("Error logging in");
+                    }
+                },
                 error : function (jqXHR, textStatus, errorThrown) {
-                    console.log("Error");
+                    that.setErrorMessage(textStatus);
                 }
-	    });
-	    return false;
+            });
+            return false;
+        },
+
+        setErrorMessage : function (text) {
+            this.$('.login-error-box').find('.login-error-message').text(text).end().show();
+        },
+        clearErrorMessage : function () {
+            this.$('.login-error-box').hide();
         }
     });
 
