@@ -7,7 +7,7 @@
 
 	<http use-expressions="true">
 		<!-- Authentication policy -->
-		<form-login login-page="/" login-processing-url="/signin/authenticate" authentication-failure-url="/#login_failed" 
+		<form-login login-page="/signin" login-processing-url="/signin/authenticate" authentication-failure-url="/signin?error=bad_credentials" 
 			authentication-success-handler-ref="ajaxAuthenticationSuccessHandler" 
 			authentication-failure-handler-ref="ajaxAuthenticationFailureHandler"/>
 		<logout logout-url="/signout" delete-cookies="JSESSIONID" />

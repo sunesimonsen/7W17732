@@ -16,6 +16,7 @@
 package org.springframework.social.showcase.signin;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 public class SignInUtils {
@@ -28,7 +29,8 @@ public class SignInUtils {
 	}
 	
 	public static boolean isSignedIn() {
-		return SecurityContextHolder.getContext().getAuthentication() != null;
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		return authentication != null && authentication.isAuthenticated();
 	}
 	
 }

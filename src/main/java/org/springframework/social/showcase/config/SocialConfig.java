@@ -88,7 +88,8 @@ public class SocialConfig {
 	
 	@Bean
 	public ConnectController connectController() {
-		return new ConnectController(connectionFactoryLocator(), connectionRepository());
+		ConnectController connectController = new AjaxConnectController(connectionFactoryLocator(), connectionRepository());
+		return connectController;
 	}
 
 	@Bean

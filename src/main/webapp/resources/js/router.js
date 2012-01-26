@@ -2,8 +2,6 @@ define([
     'require'
 ], function(require){
     var fetchSession = function(callback) {
-        var that = this;
-        
         $.ajax("home.json", {
             method: "GET",
             dataType: "json",
@@ -13,7 +11,22 @@ define([
         });
     };
 
-    
+    var contains = function (list, value) {
+        return _.any(list, function (e) { return e === value;  });
+    };
+
+    var redirectIfNot = function (router, constraints, callback) {
+        fetchSession(function (data) {                
+            if (contains(constraints, "authenticated") && !data.authenticated) {
+                router.navigate("login", true);
+            } else if (contains(constraints, "connected") && !data.connected) {
+                router.navigate("connect", true);
+            } else {
+                callback();
+            }
+        });
+    };
+
     var AppRouter = Backbone.Router.extend({
         routes: {
             // Define some URL routes
@@ -28,21 +41,18 @@ define([
             });
         },
         showConnect : function () {
-            require(['views/connect'], function (connectView) {
-                connectView.render();
+            redirectIfNot(this, ["authenticated"], function () {
+                require(['views/connect'], function (connectView) {
+                    connectView.render();
+                });
             });
         },
         defaultAction: function(actions){
             var that = this;
             
-            fetchSession(function (data) {                
-                if (!data.authenticated) {
-                    that.navigate("login", true);
-                } else if (!data.connected) {
-                    that.navigate("connect", true);
-                }
+            redirectIfNot(this, ["authenticated", "connected"], function () {
+                console.log("success"); 
             });
-
         }
     });
 
