@@ -1,6 +1,7 @@
 define([
-    'require'
-], function(require){
+    'require',
+    'collections'
+], function(require, collections){
     var fetchSession = function(callback) {
         $.ajax("home.json", {
             method: "GET",
@@ -11,15 +12,11 @@ define([
         });
     };
 
-    var contains = function (list, value) {
-        return _.any(list, function (e) { return e === value;  });
-    };
-
     var redirectIfNot = function (router, constraints, callback) {
         fetchSession(function (data) {                
-            if (contains(constraints, "authenticated") && !data.authenticated) {
+            if (collections.contains(constraints, "authenticated") && !data.authenticated) {
                 router.navigate("login", true);
-            } else if (contains(constraints, "connected") && !data.connected) {
+            } else if (collections.contains(constraints, "connected") && !data.connected) {
                 router.navigate("connect", true);
             } else {
                 callback();
