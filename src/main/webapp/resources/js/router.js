@@ -29,26 +29,32 @@ define([
             // Define some URL routes
             'login': 'showLogin',
             'connect': 'showConnect',
+            'home': 'home',
             // Default
             '*actions': 'defaultAction'
         },
         showLogin: function(){
-            require(['views/login'], function (loginView) {
-                loginView.render();
+            require(['views/login'], function (view) {
+                view.render();
             });
         },
         showConnect : function () {
             redirectIfNot(this, ["authenticated"], function () {
-                require(['views/connect'], function (connectView) {
-                    connectView.render();
+                require(['views/connect'], function (view) {
+                    view.render();
+                });
+            });
+        },
+        home : function () {
+            redirectIfNot(this, ["authenticated", "connected"], function () {
+                require(['views/home'], function (view) {
+                    view.render();
                 });
             });
         },
         defaultAction: function(actions){
-            var that = this;
-            
             redirectIfNot(this, ["authenticated", "connected"], function () {
-                console.log("success"); 
+                router.navigate("home", false);
             });
         }
     });

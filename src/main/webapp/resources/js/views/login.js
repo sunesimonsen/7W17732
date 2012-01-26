@@ -32,7 +32,7 @@ define([
                 },
                 success : function(data, textStatus, jqXHR) {
                     if (data === "success") {
-                        require("router").navigate("connect", true);
+                        require("router").navigate("home", true);
                     } else {
                         that.setErrorMessage("Error logging in");
                     }

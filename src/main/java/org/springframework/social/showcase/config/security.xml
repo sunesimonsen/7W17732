@@ -5,9 +5,9 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
 
-	<http use-expressions="true">
+	<http use-expressions="true" create-session="always">
 		<!-- Authentication policy -->
-		<form-login login-page="/signin" login-processing-url="/signin/authenticate" authentication-failure-url="/signin?error=bad_credentials" 
+		<form-login login-page="/#login" login-processing-url="/signin/authenticate" authentication-failure-url="/#bad_credentials" 
 			authentication-success-handler-ref="ajaxAuthenticationSuccessHandler" 
 			authentication-failure-handler-ref="ajaxAuthenticationFailureHandler"/>
 		<logout logout-url="/signout" delete-cookies="JSESSIONID" />
@@ -21,6 +21,9 @@
 		<intercept-url pattern="/" access="permitAll" />
 		<intercept-url pattern="/**" access="isAuthenticated()"  />
 	</http>
+	
+	<beans:bean id="securityContextPersistenceFilter" class="org.springframework.security.web.context.SecurityContextPersistenceFilter"/>
+	
 	
 	<beans:bean id="ajaxAuthenticationSuccessHandler" class="org.springframework.social.showcase.config.AjaxAuthenticationSuccessHandler"/>
 	<beans:bean id="ajaxAuthenticationFailureHandler" class="org.springframework.social.showcase.config.AjaxAuthenticationFailureHandler"/>

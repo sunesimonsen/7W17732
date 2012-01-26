@@ -15,8 +15,11 @@
  */
 package org.springframework.social.showcase.twitter;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
+import org.springframework.social.twitter.api.Tweet;
 import org.springframework.social.twitter.api.Twitter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,6 +42,11 @@ public class TwitterTimelineController {
 		return showTimeline("Home", model);
 	}
 	
+	@RequestMapping(value="/twitter/timeline/home", method=RequestMethod.GET)
+	public List<Tweet> getHomeTimeline() {
+		return twitter.timelineOperations().getHomeTimeline();
+	}
+	
 	@RequestMapping(value="/twitter/timeline/{timelineType}", method=RequestMethod.GET)
 	public String showTimeline(@PathVariable("timelineType") String timelineType, Model model) {
 		if (timelineType.equals("Home")) {
@@ -56,7 +64,6 @@ public class TwitterTimelineController {
 		return "twitter/timeline";
 	}
 	
-
 	@RequestMapping(value="/twitter/tweet", method=RequestMethod.POST)
 	public String postTweet(String message) {
 		twitter.timelineOperations().updateStatus(message);

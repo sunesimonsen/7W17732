@@ -17,7 +17,13 @@ package org.springframework.social.showcase.signin;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+
+import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 public class SignInUtils {
 	
@@ -30,7 +36,20 @@ public class SignInUtils {
 	
 	public static boolean isSignedIn() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		return authentication != null && authentication.isAuthenticated();
+		if (authentication == null) {
+			return false;
+		}
+		
+		Iterable<String> authorities = Iterables.transform(authentication.getAuthorities(), authorityName);
+		
+		return Iterables.contains(authorities, "ROLE_USER");
 	}
+	
+	private static Function<GrantedAuthority, String> authorityName = new Function<GrantedAuthority, String>() {
+		@Override
+		public String apply(GrantedAuthority input) {
+			return input.getAuthority();
+		}
+	};
 	
 }
