@@ -1,25 +1,17 @@
 define([
     'require',
-    'collections'
-], function(require, collections){
-    var fetchSession = function(callback) {
-        $.ajax("home.json", {
-            method: "GET",
-            dataType: "json",
-            success: function(data) {
-                return callback(data);
-            }
-        });
-    };
-
+    'models/Context'
+], function(require, context){
     var redirectIfNot = function (router, constraints, callback) {
-        fetchSession(function (data) {                
-            if (collections.contains(constraints, "authenticated") && !data.authenticated) {
-                router.navigate("login", true);
-            } else if (collections.contains(constraints, "connected") && !data.connected) {
-                router.navigate("connect", true);
-            } else {
-                callback();
+        context.fetch({
+            success: function (model) {
+                if (_.include(constraints, "authenticated") && !model.get("authenticated")) {
+                    router.navigate("login", true);
+                } else if (_.include(constraints, "connected") && !model.get("connected")) {
+                    router.navigate("connect", true);
+                } else {
+                    callback();
+                }
             }
         });
     };
@@ -54,7 +46,7 @@ define([
         },
         defaultAction: function(actions){
             redirectIfNot(this, ["authenticated", "connected"], function () {
-                router.navigate("home", false);
+                router.navigate("home", true);
             });
         }
     });
