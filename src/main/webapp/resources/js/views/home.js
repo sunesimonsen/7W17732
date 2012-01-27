@@ -19,7 +19,7 @@ define([
             // Append our compiled template to this Views "el"
             $(this.el).append( compiledTemplate );
 
-            timelineView.render();
+            this.$('.timeline').html(timelineView.render().el);
         }
     });
 
