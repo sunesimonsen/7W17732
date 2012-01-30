@@ -1,9 +1,9 @@
 define([
 ], function(){
-    var Tweet = Backbone.Model.extend({
+    var TimelineTweet = Backbone.Model.extend({
         initialize : function () {
         }
     });
 
-    return Tweet;
+    return TimelineTweet;
 });
