@@ -1,33 +1,50 @@
 define([
     'collections/HomeTimeline',
-    'views/TweetView'
-], function(homeTimeline, TweetView){
+    'views/TweetView',
+    'plugins/text!views/TimelineView.html'
+], function(homeTimeline, TweetView, template){
     var TimelineView = Backbone.View.extend({
-        tagName: 'ul',
-        
         events: {
+            'click button.refresh' : 'refresh'
         },
 
         initialize: function() {
+            var fetchTimeout = 5000;
+            
             homeTimeline.bind('all', this.render, this);
             homeTimeline.bind('add', this.add, this);
+
+            homeTimeline.fetch();
+        },
+
+        refresh : function() {
             homeTimeline.fetch();
         },
 
         render: function() {
             var el = $(this.el);
             el.empty();
+            el.append(template);
+
+            var timeline = $(".timeline", el);
             
             homeTimeline.each(function (tweet) {
                 var view = new TweetView({model: tweet});
-                el.append( view.render().el );
+                timeline.append( view.render().el );
             });
+
+            this.$('button').button({
+                icons: {
+                    secondary: "ui-icon-refresh"
+                }
+            });
+            
             return this;
         },
 
         add : function(tweet) {
             var view = new TweetView({model: tweet});
-            $(this.el).prepend( view.render().el );
+            this.$('.timeline').prepend( view.render().el );
             return this;
         }
     });

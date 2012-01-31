@@ -1,0 +1,29 @@
+body {
+    background-color: white;
+}
+
+.login-box {
+    margin-top: 80px;
+    color: white;
+}
+
+.login-box fieldset {
+background-image: linear-gradient(bottom, rgb(16,41,59) 19%, rgb(27,62,89) 54%);
+background-image: -o-linear-gradient(bottom, rgb(16,41,59) 19%, rgb(27,62,89) 54%);
+background-image: -moz-linear-gradient(bottom, rgb(16,41,59) 19%, rgb(27,62,89) 54%);
+background-image: -webkit-linear-gradient(bottom, rgb(16,41,59) 19%, rgb(27,62,89) 54%);
+background-image: -ms-linear-gradient(bottom, rgb(16,41,59) 19%, rgb(27,62,89) 54%);
+
+background-image: -webkit-gradient(
+	linear,
+	left bottom,
+	left top,
+	color-stop(0.19, rgb(16,41,59)),
+	color-stop(0.54, rgb(27,62,89))
+);
+
+    border-style: solid;
+    border-color: #e0e0e0;
+    border-width: 14px;
+
+}

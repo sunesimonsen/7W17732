@@ -10,7 +10,8 @@ define([
         render : function() {
             var data = {};
             var compiledTemplate = _.template( template, data );
-            $(this.el).append( compiledTemplate );   
+            $(this.el).append( compiledTemplate );
+            this.$('input[type=submit]').button();
             return this;
         },
 

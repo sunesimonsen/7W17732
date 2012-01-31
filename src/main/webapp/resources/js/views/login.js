@@ -19,6 +19,8 @@ define([
             var compiledTemplate = _.template( template, data );
                 // Append our compiled template to this Views "el"
             $(this.el).append( compiledTemplate );
+
+            this.$('input[type=submit]').button();
         },
 
         click : function () {

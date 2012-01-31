@@ -1,22 +1,31 @@
-<div>
-    <div class="login-error-box ui-widget hide">
-	<div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
-	    <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
-		<strong>Alert:</strong> <span class="login-error-message"></span>
-            </p>
-	</div>
-    </div>
+<div class="container">
+    <div class="login-box span-14 prepend-5 append-5 last">
+        <div class="login-error-box ui-widget hide">
+	        <div class="ui-state-error ui-corner-all" style="padding: 0 .7em;"> 
+	            <p><span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span> 
+		            <strong>Alert:</strong> <span class="login-error-message"></span>
+                </p>
+	        </div>
+        </div>
 
-    <form> 
-        <label for="j_username">Username</label> <input type="text" name="j_username" /> 
-        <label for="j_password">Password</label> <input type="text" name="j_password" /> 
-        <input type="submit" value="Login" />
-    </form>
-    
-    <p>Some test user/password pairs you may use are:</p>
-    <ul>
-	<li>habuma/freebirds</li>
-	<li>kdonald/melbourne</li>
-	<li>rclarkson/atlanta</li>
-    </ul>
+        <form> 
+            <fieldset>
+                <p>
+                    <label for="j_username">Username</label> <input type="text" name="j_username" /> <br/>
+                    <label for="j_password">Password</label> <input type="text" name="j_password" /> 
+                </p>
+                <p>
+                    <input type="submit" value="Login" />
+                </p>
+                <p>
+                    Some test user/password pairs you may use are:
+                    <ul>
+	                    <li>habuma/freebirds</li>
+	                    <li>kdonald/melbourne</li>
+	                    <li>rclarkson/atlanta</li>
+                    </ul>
+                </p>
+            </fieldset>
+        </form>    
+    </div>
 </div>
