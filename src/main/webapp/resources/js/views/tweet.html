@@ -1,3 +1,13 @@
-<img src="<%=profileImageUrl%>" alt="profile picture"/>
-<span class="message"><%= text %></span>
-<span class="user"><%= fromUser %></span>
+<div class="span-2">
+    <img src="<%=profileImageUrl%>" alt="profile picture"/>
+</div>
+<div class="span-18 last">
+    <p class="message"><%= text %></p>
+</div>
+<div class="clear"/>
+<div class="span-20 last">
+    <div class="toolbar">
+        <span class="retweet">Retweet</span>
+        <span class="user"><%= fromUser %></span>
+    </div>
+</div>

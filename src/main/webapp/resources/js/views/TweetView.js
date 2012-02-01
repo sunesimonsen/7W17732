@@ -3,6 +3,7 @@ define([
 ], function(template){
     var TweetView = Backbone.View.extend({
         tagName: 'li',
+        className: 'span-20 last',
         
         events: {
             

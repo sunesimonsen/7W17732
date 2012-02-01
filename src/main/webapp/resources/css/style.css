@@ -4,26 +4,95 @@ body {
 
 .login-box {
     margin-top: 80px;
-    color: white;
 }
 
-.login-box fieldset {
-background-image: linear-gradient(bottom, rgb(16,41,59) 19%, rgb(27,62,89) 54%);
-background-image: -o-linear-gradient(bottom, rgb(16,41,59) 19%, rgb(27,62,89) 54%);
-background-image: -moz-linear-gradient(bottom, rgb(16,41,59) 19%, rgb(27,62,89) 54%);
-background-image: -webkit-linear-gradient(bottom, rgb(16,41,59) 19%, rgb(27,62,89) 54%);
-background-image: -ms-linear-gradient(bottom, rgb(16,41,59) 19%, rgb(27,62,89) 54%);
+.connect-box {
+    margin-top: 80px;
+}
 
-background-image: -webkit-gradient(
-	linear,
-	left bottom,
-	left top,
-	color-stop(0.19, rgb(16,41,59)),
-	color-stop(0.54, rgb(27,62,89))
-);
+.panel {
+    background-image: linear-gradient(bottom, rgb(16,41,59) 19%, rgb(27,62,89) 54%);
+    background-image: -o-linear-gradient(bottom, rgb(16,41,59) 19%, rgb(27,62,89) 54%);
+    background-image: -moz-linear-gradient(bottom, rgb(16,41,59) 19%, rgb(27,62,89) 54%);
+    background-image: -webkit-linear-gradient(bottom, rgb(16,41,59) 19%, rgb(27,62,89) 54%);
+    background-image: -ms-linear-gradient(bottom, rgb(16,41,59) 19%, rgb(27,62,89) 54%);
+    
+    background-image: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0.19, rgb(16,41,59)),
+	    color-stop(0.54, rgb(27,62,89))
+    );
+
+    color: white;
 
     border-style: solid;
     border-color: #e0e0e0;
     border-width: 14px;
+    padding: 30px;
+}
 
+.login-error-box {
+    margin-bottom: 20px;
+}
+
+.timeline ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.timeline ul li {
+    background-image: linear-gradient(bottom, rgb(232,232,232) 42%, rgb(240,240,240) 61%);
+    background-image: -o-linear-gradient(bottom, rgb(232,232,232) 42%, rgb(240,240,240) 61%);
+    background-image: -moz-linear-gradient(bottom, rgb(232,232,232) 42%, rgb(240,240,240) 61%);
+    background-image: -webkit-linear-gradient(bottom, rgb(232,232,232) 42%, rgb(240,240,240) 61%);
+    background-image: -ms-linear-gradient(bottom, rgb(232,232,232) 42%, rgb(240,240,240) 61%);
+    
+    background-image: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0.42, rgb(232,232,232)),
+	    color-stop(0.61, rgb(240,240,240))
+    );
+
+    margin-bottom: 2px;
+}
+
+.timeline {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.timeline .message {
+    margin-top: 20px;
+}
+
+.timeline .toolbar {
+    margin: 20px;
+    margin-top: 5px;
+    text-align: right;
+}
+
+.timeline .toolbar span {
+    margin-left: 10px;
+}
+
+.timeline .user {
+
+}
+
+.timeline img {
+    margin: 15px;
+    margin-bottom: 0px;
+}
+
+.tweet-editor textarea {
+    height: 5em;
+}
+
+.home {
+    margin-top: 20px;
 }
