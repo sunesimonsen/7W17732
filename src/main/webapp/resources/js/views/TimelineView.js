@@ -26,7 +26,7 @@ define([
             el.empty();
             el.append(template);
 
-            var timeline = $(".timeline", el);
+            var timeline = $("> ul", el);
             
             homeTimeline.each(function (tweet) {
                 var view = new TweetView({model: tweet});
@@ -44,7 +44,7 @@ define([
 
         add : function(tweet) {
             var view = new TweetView({model: tweet});
-            this.$('.timeline').prepend( view.render().el );
+            this.$('> ul').prepend( view.render().el );
             return this;
         }
     });

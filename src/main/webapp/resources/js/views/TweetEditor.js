@@ -10,13 +10,14 @@ define([
         render : function() {
             var data = {};
             var compiledTemplate = _.template( template, data );
-            $(this.el).append( compiledTemplate );
+            $(this.el).html( compiledTemplate );
             this.$('input[type=submit]').button();
             return this;
         },
 
         tweet : function() {
             var text = this.$("textarea").val();
+            this.$("textarea").val("");
             homeTimeline.create({
                 text: text
             });
