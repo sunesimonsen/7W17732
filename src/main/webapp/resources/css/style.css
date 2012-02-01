@@ -91,6 +91,7 @@ body {
 
 .tweet-editor textarea {
     height: 5em;
+    resize: vertical;
 }
 
 .home {
