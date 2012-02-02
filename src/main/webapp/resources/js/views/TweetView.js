@@ -5,14 +5,6 @@ define([
         tagName: 'li',
         className: 'span-20 last',
         
-        events: {
-            
-        },
-
-        initialize: function() {
-
-        },
-
         render: function() {
             var compiledTemplate = _.template(template, this.model.toJSON());
             $(this.el).html(compiledTemplate);

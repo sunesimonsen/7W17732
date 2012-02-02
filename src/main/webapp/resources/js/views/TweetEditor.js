@@ -8,9 +8,7 @@ define([
         },
 
         render : function() {
-            var data = {};
-            var compiledTemplate = _.template( template, data );
-            $(this.el).html( compiledTemplate );
+            $(this.el).html( template );
             this.$('input[type=submit]').button();
             return this;
         },
