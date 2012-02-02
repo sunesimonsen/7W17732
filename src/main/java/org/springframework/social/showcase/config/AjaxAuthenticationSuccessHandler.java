@@ -15,6 +15,7 @@ public class AjaxAuthenticationSuccessHandler extends  SimpleUrlAuthenticationSu
 			HttpServletResponse response, Authentication authentication)
 			throws IOException, ServletException {
 		if ("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))) {
+			
 			clearAuthenticationAttributes(request);
 			response.setHeader("Content-type", "application/json");
             response.getWriter().print("\"success\"");
