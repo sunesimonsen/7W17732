@@ -1,6 +1,6 @@
 define([
     'require',
-    'RedirectIfNot'
+    'redirectIfNot'
 ], function(require, redirectIfNot){
     var AppRouter = Backbone.Router.extend({
         routes: {
@@ -12,20 +12,20 @@ define([
             '*actions': 'defaultAction'
         },
         showLogin: function(){
-            require(['views/login'], function (view) {
+            require(['views/Login'], function (view) {
                 view.render();
             });
         },
         showConnect : function () {
             redirectIfNot(this, ["authenticated"], function () {
-                require(['views/connect'], function (view) {
+                require(['views/Connect'], function (view) {
                     view.render();
                 });
             });
         },
         home : function () {
             redirectIfNot(this, ["authenticated", "connected"], function () {
-                require(['views/home'], function (view) {
+                require(['views/Home'], function (view) {
                     view.render();
                 });
             });

@@ -1,6 +1,6 @@
 define([
     'require',
-    'plugins/text!views/login.html'
+    'plugins/text!views/Login.html'
 ], function(require, template){
 
     var LoginView = Backbone.View.extend({

@@ -1,8 +1,10 @@
 define([
-    'plugins/text!views/connect.html'
-], function(template){
-
-    var ConnectView = Backbone.View.extend({
+    'require',
+    'plugins/text!views/Home.html',
+    'views/TimelineView',
+    'views/TweetEditor'
+], function(require, template, timelineView, tweetEditor){
+    var HomeView = Backbone.View.extend({
 
         el: '#container',
         
@@ -17,8 +19,11 @@ define([
             var compiledTemplate = _.template( template, data );
             // Append our compiled template to this Views "el"
             $(this.el).append( compiledTemplate );
-        },
+            
+            this.$('.tweetEditor').html(tweetEditor.render().el);
+            this.$('.timeline').html(timelineView.render().el);
+        }
     });
 
-    return new ConnectView();
+    return new HomeView();
 });

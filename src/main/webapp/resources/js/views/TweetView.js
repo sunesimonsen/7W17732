@@ -1,5 +1,5 @@
 define([
-    'plugins/text!views/tweet.html'
+    'plugins/text!views/Tweet.html'
 ], function(template){
     var TweetView = Backbone.View.extend({
         tagName: 'li',
