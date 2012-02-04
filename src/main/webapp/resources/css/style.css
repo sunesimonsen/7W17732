@@ -76,12 +76,12 @@ body {
     text-align: right;
 }
 
-.timeline .toolbar span {
-    margin-left: 10px;
+.timeline .toolbar > span {
+    margin-left: 20px;
 }
 
-.timeline .user {
-
+.timeline .toolbar > a {
+    margin-left: 10px;
 }
 
 .timeline img {
@@ -124,4 +124,24 @@ body {
 	    color-stop(0.19, rgb(16,41,59)),
 	    color-stop(0.54, rgb(27,62,89))
     );
+}
+
+
+a {
+    color:#10293B;
+    text-decoration: none;
+    font-weight: bold;
+}
+a:active {
+    color:#10293B;
+}
+a:link {
+    color:#10293B;
+}
+a:visited {
+    color:#10293B;
+}
+a:hover {
+    color:#326487;
+    cursor: pointer;
 }

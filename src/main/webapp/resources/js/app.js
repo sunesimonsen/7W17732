@@ -1,5 +1,8 @@
 require.config({
-    baseUrl: "resources/js"
+    baseUrl: "resources/js",
+    
+    // Development purpose, remove for production
+    urlArgs: "bust=" +  (new Date()).getTime() 
 });
 
 // Load our app module and pass it to our definition function

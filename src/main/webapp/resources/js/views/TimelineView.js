@@ -11,7 +11,7 @@ define([
         initialize: function() {
             var fetchTimeout = 5000;
             
-            homeTimeline.bind('all', this.render, this);
+            homeTimeline.bind('reset', this.render, this);
             homeTimeline.bind('add', this.add, this);
 
             homeTimeline.fetch();
@@ -44,7 +44,8 @@ define([
 
         add : function(tweet) {
             var view = new TweetView({model: tweet});
-            this.$('> ul').prepend( view.render().el );
+            var tweetEl = $(view.render().el);
+            tweetEl.hide().prependTo(this.$('> ul')).slideDown("slow");
             return this;
         }
     });
