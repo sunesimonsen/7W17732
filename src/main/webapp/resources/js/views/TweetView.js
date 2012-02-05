@@ -1,8 +1,8 @@
 define([
     'plugins/text!views/Tweet.html',
     'collections/HomeTimeline',
-    'models/TweetEditorModel'
-], function(template, homeTimeline, tweetEditorModel){
+    'views/TweetEditorDialog'
+], function(template, homeTimeline, TweetEditorDialog){
     var TweetView = Backbone.View.extend({
         tagName: 'li',
         className: 'span-20 last',
@@ -25,7 +25,7 @@ define([
 
         retweet : function () {
             var text = "RT @" + this.model.get("fromUser")+ ":" + this.model.get('text');
-            tweetEditorModel.set({text : text});
+            new TweetEditorDialog({text: text}).render();            
             return false;
         }
     });
