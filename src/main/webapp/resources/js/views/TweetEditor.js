@@ -24,6 +24,7 @@ define([
         render : function() {
             var compiledTemplate = _.template(template, this.model.toJSON());
             $(this.el).html( compiledTemplate );
+            this.$('textarea').limitedTextarea();
             this.$('input[type=submit]').button();
             return this;
         },

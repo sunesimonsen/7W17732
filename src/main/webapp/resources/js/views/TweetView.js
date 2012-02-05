@@ -19,13 +19,14 @@ define([
         },
 
         reply: function () {
-            console.log("reply");
+            var text = "@" + this.model.get("fromUser") + " ";
+            new TweetEditorDialog({title: 'Retweet', text: text}).render();            
             return false;
         },
 
         retweet : function () {
             var text = "RT @" + this.model.get("fromUser")+ ":" + this.model.get('text');
-            new TweetEditorDialog({text: text}).render();            
+            new TweetEditorDialog({title: 'Retweet', text: text}).render();            
             return false;
         }
     });

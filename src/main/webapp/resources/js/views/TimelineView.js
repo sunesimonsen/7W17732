@@ -15,10 +15,16 @@ define([
             homeTimeline.bind('add', this.add, this);
 
             homeTimeline.fetch();
+
+            // Simple solution could be dangerous
+            setInterval(function () {
+                homeTimeline.fetch();   
+            }, 60000);
         },
 
         refresh : function() {
             homeTimeline.fetch();
+            return false;
         },
 
         render: function() {
