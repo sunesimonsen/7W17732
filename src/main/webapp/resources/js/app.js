@@ -1,3 +1,4 @@
+// Configure Require.js paths
 require.config({
     baseUrl: "resources/js",
     paths : {
@@ -5,7 +6,9 @@ require.config({
     }
 });
 
-// Load our app module and pass it to our definition function
+@BEGIN_VERSION 1
+// Load our router and start history tracking
 require(['router'], function(appRouter){
     Backbone.history.start();
 });
+@END_VERSION 1
