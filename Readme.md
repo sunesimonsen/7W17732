@@ -9,7 +9,7 @@
 ## jQueryUI ##
 ## Blueprint ##
 
-## Start the lab ## 
+## Start the lab ##
 
 Run the following command in the console to start the lab: 
 
@@ -254,5 +254,5 @@ Goto the next step by running:
     
     mvn lab:next
     
-## Step 4: Tweeting your first tweet ##    
+## Step 4: Tweeting your first tweet ##
   
