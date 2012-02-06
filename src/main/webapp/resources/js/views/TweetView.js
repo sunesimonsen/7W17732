@@ -8,10 +8,10 @@ define([
         className: 'span-20 last',
 
         events: {
-            @BEGIN_VERSION 5
+            @BEGIN_VERSION 6
             'click a.reply' : 'reply',
             'click a.retweet' : 'retweet'
-            @END_VERSION 5
+            @END_VERSION 6
         },
 
         render: function() {
@@ -21,19 +21,21 @@ define([
             return this.el;
         },
 
-        @BEGIN_VERSION 5
+        @BEGIN_VERSION 6
         reply: function () {
             var text = "@" + this.model.get("fromUser") + " ";
-            new TweetEditorDialog({title: 'Retweet', text: text}).render();            
+            new TweetEditorDialog({title: 'Reply', text: text}).render();            
             return false;
         },
 
         retweet : function () {
+            @BEGIN_VERSION 7
             var text = "RT @" + this.model.get("fromUser")+ ": " + this.model.get('text');
-            new TweetEditorDialog({title: 'Retweet', text: text}).render();            
+            new TweetEditorDialog({title: 'Retweet', text: text}).render();
+            @END_VERSION 7
             return false;
         }
-        @END_VERSION 5
+        @END_VERSION 6
     });
     
     return TweetView;

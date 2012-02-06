@@ -373,3 +373,38 @@ Refresh the page and type something in the textarea area.
 Goto the next step by running:
     
     mvn lab:next
+
+## Step 6: Creating a retweet dialog ##
+
+I have added a reply and a retweet link to the TweetView. When click they should open a dialog with the appropriate text.
+
+Take a look at the methods in client/js/views/TweetView.js and implement the retweet function. 
+
+The text of the retweet should be something like: 
+    
+    "RT @{fromUser}: {text}"
+    
+Open client/js/views/TweetEditorDialog.js to implement the dialog. Use the documentation on the <a href="http://jqueryui.com/demos/dialog/">jQuery UI page</a> to implement this step.
+
+Set the value of the textarea under the root element to the text property of the view options when the dialog opens. Remember to use <i>that</i> instead of <i>this</i> for code in a nested scopes when refering to the view. 
+
+Turn the textarea into a <i>LimitedTextarea</i> in the open event.
+
+When the textarea closes the dialog should be destroyed and the root element of the view should be removed from the DOM. You call method on the dialog the following way: 
+
+    el.dialog("method",[args...])
+
+Ensure that the DOM is cleaned properly when the dialog is closed to avoid memory leaks.
+
+Add a </i>Tweet</i> button to the dialog that retrieves the text of the textarea and creates a new Tweet on the homeTimeline collection. 
+Close the dialog afterwards. Remember to wait for the tweet to be retrieved from the server before adding it to the collection.
+
+Add a <i>Cancel</i> button to the dialog that closes this dialog.
+
+Finally set the title of the dialog to the title property of the options map.
+
+Refresh the page and see if you can reply and retweet.
+
+Goto the next step by running:
+    
+    mvn lab:next

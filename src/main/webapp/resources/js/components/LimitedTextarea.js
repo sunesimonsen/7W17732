@@ -33,7 +33,7 @@ $.widget('7W17732.limitedTextarea', {
             var remains = maxLength - length;
             indicator.text(remains);
             indicator.css({
-                color: remains > 10 ? 'green' : 'red'
+                color: remains > 20 ? 'green' : 'red'
             });
         };
 
@@ -41,6 +41,6 @@ $.widget('7W17732.limitedTextarea', {
         textarea.keydown(updateIndicator);
 
         updateIndicator();
-        @BEGIN_VERSION 6
+        @END_VERSION 6
     }
 });
