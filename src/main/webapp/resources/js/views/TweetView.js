@@ -1,5 +1,5 @@
 define([
-    'plugins/text!views/Tweet.html',
+    'plugins/text!views/TweetView.html',
     'collections/HomeTimeline',
     'views/TweetEditorDialog'
 ], function(template, homeTimeline, TweetEditorDialog){
