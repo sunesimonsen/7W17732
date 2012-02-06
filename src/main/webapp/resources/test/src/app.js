@@ -1,6 +1,9 @@
 var req = require.config({
     context : 'text',
-    baseUrl: "../js"
+    baseUrl: "../js",
+    paths : {
+        'plugins' : '../jslibs/plugins'
+    }
 });
 
 // Load our app module and pass it to our definition function

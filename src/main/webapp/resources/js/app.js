@@ -1,5 +1,8 @@
 require.config({
-    baseUrl: "resources/js"
+    baseUrl: "resources/js",
+    paths : {
+        'plugins' : '../jslibs/plugins'
+    }
 });
 
 // Load our app module and pass it to our definition function
