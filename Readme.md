@@ -9,13 +9,13 @@
 ## jQueryUI ##
 ## Blueprint ##
 
-### Start the lab ### 
+## Start the lab ## 
 
 Run the following command in the console to start the lab: 
 
     mvn lab:init
 
-### Step 0: Start the application ###
+## Step 0: Start the application ##
 
 In this step we will start the application by requiring the Application <a href="http://documentcloud.github.com/backbone/#Router">Backbone Router</a> using Require.js.
 
@@ -47,7 +47,7 @@ Goto the next step by running:
     
     mvn lab:next
 
-### Step 1: Redirect to login if not authenticated ###
+## Step 1: Redirect to login if not authenticated ##
 
 Open the file client/js/router in your editor. 
 
