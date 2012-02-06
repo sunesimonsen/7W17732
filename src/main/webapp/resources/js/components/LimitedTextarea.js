@@ -4,16 +4,29 @@ $.widget('7W17732.limitedTextarea', {
     },
 
     _create : function() {
-        var el = this.element;
-        var o = this.options;
+        var textarea = this.element;
 
+        @BEGIN_VERSION 6
+        var maxLength = textarea.attr('maxlength') ||
+            this.options.maxLength;
+        textarea.attr('maxlength', maxLength);
 
-        var maxLength = el.attr('maxlength') || o.maxLength;
-        el.attr('maxlength', maxLength);
-
-        var textarea = el;
+        var indicator = $('<p>'+maxLength+'</p>');
+        indicator.css({
+            color: 'green',
+            position: 'absolute',
+            right: 30,
+            bottom: -10
+        });
+        
         var component = $('<div></div>');
-        var indicator = $('<p>Foo</p>');
+        component.css({position: 'relative'});
+        component.append('<textarea/>');
+        
+        component.append(indicator);
+        component.insertAfter(textarea);
+
+        component.find('textarea').replaceWith(textarea);
 
         var updateIndicator = function () {
             var length  = textarea.val().length;
@@ -23,27 +36,11 @@ $.widget('7W17732.limitedTextarea', {
                 color: remains > 10 ? 'green' : 'red'
             });
         };
-        
+
         textarea.keyup(updateIndicator);
         textarea.keydown(updateIndicator);
 
-        component.css({
-            position: 'relative'
-        });
-        component.append('<textarea/>');
-
-        indicator.css({
-            color: 'green',
-            position: 'absolute',
-            right: 30,
-            bottom: -10
-        });
-        
-        component.append(indicator);
-        component.insertAfter(el);
-
-        component.find('textarea').replaceWith(el);
-
         updateIndicator();
+        @BEGIN_VERSION 6
     }
 });

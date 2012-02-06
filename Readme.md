@@ -293,5 +293,83 @@ Goto the next step by running:
     
     mvn lab:next
     
-## Step 5: Creating a custom jQuery UI component ##
+## Step 5: Creating a custom jQuery UI widget ##
 
+Open the client/js/components/LimitedTextarea.js file in you editor.
+
+Notice that this file is not a require.js module. It is included directly in index.html. That is because jQuery has it's own namespace mechanism.
+
+I this step we are going to create a <a href="http://jqueryui.com/demos/widget/">jQuery UI widget</a> that will enrich a textfield with a max length indicator. It is a little involved, so I'll only run through the important aspects.
+
+Notice that this widget is not complete, error handling and destroy methods are not implemented.
+
+The widget will read the maxlength attribute of the target textarea, if it is not provided it will take the length from the options map.
+Then it will take the target textarea and surround it with a div containing a indicator element. This indicator element will be place in the bottom left cornor of the textarea and be updated on key presses.
+
+All code should be added to the <i>_create</i> method that will be called when the widget is created.
+
+We can retrieve the max length to following way and update the attribute on the textarea if it is not defined:
+
+    var maxLength = textarea.attr('maxlength') ||
+        this.options.maxLength;
+    textarea.attr('maxlength', maxLength);
+    
+Now we create the component and indicator:
+
+    var indicator = $('<p>'+maxLength+'</p>');
+    indicator.css({
+        color: 'green', position: 'absolute',
+        right: 30, bottom: -10
+    });
+    
+    var component = $('<div></div>');
+    component.css({position: 'relative'});
+    component.append('<textarea/>');
+    component.append(indicator);
+    
+This will create the following structure:
+
+    <div style="position: relative">
+        <textarea/>
+        <p style="color: green; position: absolute; 
+                  right: 30; bottom: -10">
+            200
+        </p>
+    </div>
+    
+Then we will append this structure just after the target textarea, and the replace the textarea in the structure with the target textarea:
+
+    component.insertAfter(textarea);
+    component.find('textarea').replaceWith(textarea);
+    
+This will move the target textarea into the structure.
+
+We need to update the indicator on keystrokes:
+
+    var updateIndicator = function () {
+        var length  = textarea.val().length;
+        var remains = maxLength - length;
+        indicator.text(remains);
+        indicator.css({
+            color: remains > 10 ? 'green' : 'red'
+        });
+    };
+
+    textarea.keyup(updateIndicator);
+    textarea.keydown(updateIndicator);
+
+The updateIndicator function calculates how much of the max length remains and updates the indicator accordingly.
+
+Finally we update the indicator:
+
+    updateIndicator();
+
+No we have a working widget, let's attach it to the textarea in the render method of client/js/views/TweetEditor.js:
+
+    this.$('textarea').limitedTextarea();
+    
+Refresh the page and type something in the textarea area.
+
+Goto the next step by running:
+    
+    mvn lab:next
