@@ -49,14 +49,16 @@ define([
             
             return this.el;
         },
-        @BEGIN_VERSION 5
+        @BEGIN_VERSION 4
         add : function(tweet) {
+            @BEGIN_VERSION 5
             var view = new TweetView({model: tweet});
-            var tweetEl = $(view.render().el);
+            var tweetEl = $(view.render());
             tweetEl.hide().prependTo(this.$('> ul')).slideDown("slow");
+            @END_VERSION 5
             return this;
         }
-        @END_VERSION 5
+        @END_VERSION 4
     });
 
     return new TimelineView();

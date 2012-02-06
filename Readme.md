@@ -255,4 +255,43 @@ Goto the next step by running:
     mvn lab:next
     
 ## Step 4: Tweeting your first tweet ##
+
+We will start by adding support in the timeline view to listen for <i>add</i> events on the home timeline collection.
+
+Open the client/js/TimelineView.js and add the following line to the top of the initialize method.
+
+    homeTimeline.on('add', this.add, this);
+
+Now when new models are added to the home timeline collection the <i>add</i> method on the view will be called.
+
+In the <i>add</i> method we will prepend a new tweet view to the timeline. 
+
+    var view = new TweetView({model: tweet});
+    var tweetEl = $(view.render());
+    tweetEl.hide().prependTo(this.$('> ul')).slideDown("slow");
   
+First we create the view and render it. In order to get a nice slide down effect, we hide the newly created view prepend it to the timeline and call the slide down effect on the element.
+
+Now we only need to send a tweet to server when the user click on the <i>Tweet</i> button in the tweet editor.
+
+Open client/js/views/TweetEditor.js in you editor.
+
+In the <i>tweet</i> method add a tweet to the home timeline collection using the <a href="http://documentcloud.github.com/backbone/#Collection-create">create method</a>.
+
+    var text = this.$('textarea').val();
+    homeTimeline.create({
+        text: text
+    }, {wait: true});
+    
+    this.$('textarea').val('');
+    
+We retrieve the value of the textarea, create a data map with the value and send it of to the server using the create method. We instruct the collection to wait adding the tweet to the collection until the created version has been retrieved from the server. Finally we clear the textarea.
+
+Refresh the page and try tweeting something.
+
+Goto the next step by running:
+    
+    mvn lab:next
+    
+## Step 5: Creating a custom jQuery UI component ##
+
