@@ -25,7 +25,7 @@ define([
         },
 
         retweet : function () {
-            var text = "RT @" + this.model.get("fromUser")+ ":" + this.model.get('text');
+            var text = "RT @" + this.model.get("fromUser")+ ": " + this.model.get('text');
             new TweetEditorDialog({title: 'Retweet', text: text}).render();            
             return false;
         }

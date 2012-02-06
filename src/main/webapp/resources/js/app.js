@@ -1,10 +1,11 @@
 require.config({
-    baseUrl: "resources/js",
+    baseUrl: "resources/js"
     
     // Development purpose, remove for production
-    urlArgs: "bust=" +  (new Date()).getTime() 
+    //urlArgs: "bust=" +  (new Date()).getTime() 
 });
 
 // Load our app module and pass it to our definition function
-require(['router'], function(router){
+require(['router'], function(appRouter){
+    Backbone.history.start();
 });

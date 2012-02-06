@@ -87,6 +87,8 @@ body {
 .timeline img {
     margin: 15px;
     margin-bottom: 0px;
+    width: 48px;
+    height: 48px;
 }
 
 .tweet-editor textarea {
@@ -101,7 +103,7 @@ body {
     text-align: right;
 }
 
-.tweet-editor .buttons input[type=submit] {
+.tweet-editor .buttons button {
     margin-bottom: 20px;
     margin-right: 20px;
 }

@@ -31,14 +31,12 @@ define([
             });
         },
         defaultAction: function(actions){
+            var router = this;
             redirectIfNot(this, ["authenticated", "connected"], function () {
                 router.navigate("home", true);
             });
         }
     });
-
-    var router = new AppRouter();
-    Backbone.history.start();
     
-    return router;
+    return new AppRouter();
 });

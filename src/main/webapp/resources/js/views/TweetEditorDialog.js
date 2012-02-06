@@ -26,7 +26,7 @@ define([
                         var text = that.$('textarea').val();
                         homeTimeline.create({
                             text: text
-                        });
+                        }, {wait: true});
                         
                         $( this ).dialog( "close" );
 					},
