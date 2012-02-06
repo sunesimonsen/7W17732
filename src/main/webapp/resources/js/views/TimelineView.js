@@ -9,17 +9,20 @@ define([
         },
 
         initialize: function() {
-            var fetchTimeout = 5000;
-            
-            homeTimeline.bind('reset', this.render, this);
-            homeTimeline.bind('add', this.add, this);
-
+            @BEGIN_VERSION 5
+            homeTimeline.on('add', this.add, this);
+            @END_VERSION 5
+            @BEGIN_VERSION 4
+            homeTimeline.on('reset', this.render, this);
             homeTimeline.fetch();
-
+            @END_VERSION 4
+            
+            @BEGIN_VERSION 4
             // Simple solution could be dangerous
             setInterval(function () {
                 homeTimeline.fetch();   
             }, 60000);
+            @END_VERSION 4
         },
 
         refresh : function() {
@@ -28,32 +31,32 @@ define([
         },
 
         render: function() {
-            var el = $(this.el);
-            el.empty();
-            el.append(template);
-
-            var timeline = $("> ul", el);
-            
-            homeTimeline.each(function (tweet) {
-                var view = new TweetView({model: tweet});
-                timeline.append( view.render().el );
-            });
+            $(this.el).html(template);
 
             this.$('button').button({
                 icons: {
                     secondary: "ui-icon-refresh"
                 }
             });
-            
-            return this;
-        },
 
+            @BEGIN_VERSION 4
+            var timeline = this.$("> ul");
+            homeTimeline.each(function (tweet) {
+                var view = new TweetView({model: tweet});
+                timeline.append(view.render());
+            });
+            @END_VERSION 4
+            
+            return this.el;
+        },
+        @BEGIN_VERSION 5
         add : function(tweet) {
             var view = new TweetView({model: tweet});
             var tweetEl = $(view.render().el);
             tweetEl.hide().prependTo(this.$('> ul')).slideDown("slow");
             return this;
         }
+        @END_VERSION 5
     });
 
     return new TimelineView();

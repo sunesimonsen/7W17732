@@ -146,7 +146,6 @@ Added the following click method to the view:
     	        
     	var success = function(data, textStatus, jqXHR) {
     	    if (data === "success") {
-    	        that.clearErrorMessage();
     	        require("router").navigate("home", true);
     	    } else {
     	        that.setErrorMessage("Error logging in");
@@ -175,4 +174,66 @@ Take a look at the <i>setErrorMessage</i> method to see how jQuery calls can be 
 Try to log in with a wrong user name and password. Then you should see the error message.
 
 Then try to login with one of the users shown on the login box. You should be redirected to the Twitter connect page.
+
+Goto the next step by running:
+    
+    mvn lab:next
+
+## Step 4: Showing Twitter timeline ##
+
+I this step we will use Backbone's collections and models to retrieve tweets from the server and show them on the home page.
+
+First we need to implement the model for a tweet.
+
+Open the file client/js/models/Tweet.js in your editor.
+
+Making a new model is easy. A <a href="http://documentcloud.github.com/backbone/#Model">Backbone model</a> provides sensible defaults and a lot of features out of the box. 
+
+You don't actually need to change anything here, because the defaults are sufficient. But notice that we return the prototype for a tweet instead of a new instance of the tweet. That is because we need to create multiple instances of the tweet model.
+
+Now open the client/js/collections/HomeTimeline.js file in you editor.
+
+As you can see the module depends on the tweet model and defines a new <a href="http://documentcloud.github.com/backbone/#Collection">Backbone collection</a>.
+
+The first thing we need to specify the the model the elements in the collection should use and the url on the server that the collection maps to and :
+
+    var HomeTimeline = Backbone.Collection.extend({
+        model: Tweet,
+        url: 'twitter/timeline/home'
+    });
+
+When the <a href="http://documentcloud.github.com/backbone/#Collection-fetch">fetch</a> is called on the collection a HTTP GET will be issued to the url of the collection. For each element in the returned JSON a model will be created. There is just one problem, the server does not return a JSON array but a root element. So we need to add a parse method to the collection to retrieve the array:
+
+    parse: function(response) {
+        return response.tweetList;
+    }
+
+Finally we want to sort the tweets by their creation time:
+
+    comparator: function (tweet) {
+        return -tweet.get("createdAt");
+    }
+
+Now we just need to render the tweets. Open the client/js/views/TimelineView.js file in your editor.
+
+First of all <a href="http://documentcloud.github.com/backbone/#Events-on">bind</a> the <i>reset</i> event on the timeTimeline collection to the render method and call fetch on the collection: 
+
+    initialize: function() {
+        homeTimeline.on('reset', this.render, this);
+        homeTimeline.fetch();
+    }
+    
+When the elements are fetched from the server the <i>reset</i> event will be triggered on the collection and the render method will be called.
+
+We can then in the render method display the tweets on the view. Add the following code to the render method after the template has been inserted in the root element.
+
+    var timeline = this.$("> ul");
+    homeTimeline.each(function (tweet) {
+        var view = new TweetView({model: tweet});
+        timeline.append(view.render());
+    });
+    
+First we find the ul element just below the root element. Notice it is important to be quite strict when selecting elements in views that contains sub views. Then we treverse all the elements of the home timeline collection, create a new TweetView for each model and append the rendered view to the timeline element.
+
+Finally we need to implement the TweetView. 
 

@@ -2,15 +2,18 @@ define([
     'models/Tweet'
 ], function(Tweet){
     var HomeTimeline = Backbone.Collection.extend({
-        url: 'twitter/timeline/home',
+        @BEGIN_VERSION 4
         model: Tweet,
-        comparator: function (tweet) {
-            return -tweet.get("createdAt");
-        },
+        url: 'twitter/timeline/home',
 
         parse: function(response) {
             return response.tweetList;
+        },
+        
+        comparator: function (tweet) {
+            return -tweet.get("createdAt");
         }
+        @BEGIN_VERSION 4
     });
 
     return new HomeTimeline();

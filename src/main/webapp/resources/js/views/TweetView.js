@@ -15,7 +15,7 @@ define([
         render: function() {
             var compiledTemplate = _.template(template, this.model.toJSON());
             $(this.el).html(compiledTemplate);
-            return this;
+            return this.el;
         },
 
         reply: function () {

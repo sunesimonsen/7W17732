@@ -12,7 +12,7 @@ define([
             this.$('textarea').limitedTextarea();
             this.$('button').button();
 
-            return this;
+            return this.el;
         },
 
         tweet : function() {

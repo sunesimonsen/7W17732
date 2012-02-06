@@ -10,8 +10,10 @@ define([
         
         render: function() {
             $(this.el).html( template );
-            this.$('.tweetEditor').html(tweetEditor.render().el);
-            this.$('.timeline').html(timelineView.render().el);
+            @BEGIN_VERSION 4
+            this.$('.tweetEditor').html(tweetEditor.render());
+            @END_VERSION 4
+            this.$('.timeline').html(timelineView.render());
         }
     });
 

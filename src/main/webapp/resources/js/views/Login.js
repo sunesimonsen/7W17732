@@ -24,7 +24,6 @@ define([
             
             var success = function(data, textStatus, jqXHR) {
                 if (data === "success") {
-                    that.clearErrorMessage();
                     require("router").navigate("home", true);
                 } else {
                     that.setErrorMessage("Error logging in");
@@ -49,9 +48,6 @@ define([
         setErrorMessage : function (text) {
             this.$('.login-error-box').find('.login-error-message')
                 .text(text).end().slideDown();
-        },
-        clearErrorMessage : function () {
-            this.$('.login-error-box').hide();
         }
     });
 
