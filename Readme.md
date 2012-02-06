@@ -7,6 +7,7 @@
 ## jQuery ##
 
 ## jQueryUI ##
+## Blueprint ##
 
 ### Start the lab ### 
 
@@ -14,7 +15,7 @@ Run the following command in the console to start the lab:
 
     mvn lab:init
 
-### Step 1: Start the application ###
+### Step 0: Start the application ###
 
 In this step we will start the application by requiring the Application <a href="http://documentcloud.github.com/backbone/#Router">Backbone Router</a> using Require.js.
 
@@ -46,7 +47,7 @@ Goto the next step by running:
     
     mvn lab:next
 
-### Step 2: Redirect to login if not authenticated ###
+### Step 1: Redirect to login if not authenticated ###
 
 Open the file client/js/router in your editor. 
 
@@ -93,7 +94,7 @@ Goto the next step by running:
     
     mvn lab:next
 
-## Step 3: Login to application ##
+## Step 2: Login to application ##
 
 Open the file client/views/Login.js in you editor.
 
@@ -173,13 +174,13 @@ Take a look at the <i>setErrorMessage</i> method to see how jQuery calls can be 
 
 Try to log in with a wrong user name and password. Then you should see the error message.
 
-Then try to login with one of the users shown on the login box. You should be redirected to the Twitter connect page.
+Then try to login with one of the users shown on the login box. You should be redirected to the Twitter connect page. 
 
 Goto the next step by running:
     
     mvn lab:next
 
-## Step 4: Showing Twitter timeline ##
+## Step 3: Showing Twitter timeline ##
 
 I this step we will use Backbone's collections and models to retrieve tweets from the server and show them on the home page.
 
@@ -235,5 +236,23 @@ We can then in the render method display the tweets on the view. Add the followi
     
 First we find the ul element just below the root element. Notice it is important to be quite strict when selecting elements in views that contains sub views. Then we treverse all the elements of the home timeline collection, create a new TweetView for each model and append the rendered view to the timeline element.
 
-Finally we need to implement the TweetView. 
+Finally we need to implement the TweetView. Open the client/js/TweetView.js file in your editor.
 
+We will use the <a href="http://underscorejs.org/#template">template</a> method of the <a href="http://underscorejs.org/">underscore.js</a> library to render the tweet views. 
+
+Take a look at the file client/views/TweetView.html and notice that it contains inline JavaScript code.
+
+We would like to compile the template against a JSON version of the model. That is achieved by placing the following code in the render method:
+
+    $(this.el).html(_.template(template, this.model.toJSON()));
+
+This line turns the model into JSON compiles the template against the data using the underscore.js library and places the html in the root element of the view. 
+
+If you refresh the home page, you should see your home timeline.
+
+Goto the next step by running:
+    
+    mvn lab:next
+    
+## Step 4: Tweeting your first tweet ##    
+  

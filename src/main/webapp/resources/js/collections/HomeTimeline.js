@@ -13,7 +13,7 @@ define([
         comparator: function (tweet) {
             return -tweet.get("createdAt");
         }
-        @BEGIN_VERSION 4
+        @END_VERSION 4
     });
 
     return new HomeTimeline();

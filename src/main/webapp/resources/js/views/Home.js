@@ -13,7 +13,9 @@ define([
             @BEGIN_VERSION 4
             this.$('.tweetEditor').html(tweetEditor.render());
             @END_VERSION 4
+            @BEGIN_VERSION 3
             this.$('.timeline').html(timelineView.render());
+            @END_VERSION 3
         }
     });
 

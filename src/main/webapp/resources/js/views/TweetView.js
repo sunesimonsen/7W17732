@@ -8,16 +8,20 @@ define([
         className: 'span-20 last',
 
         events: {
+            @BEGIN_VERSION 5
             'click a.reply' : 'reply',
             'click a.retweet' : 'retweet'
+            @END_VERSION 5
         },
 
         render: function() {
-            var compiledTemplate = _.template(template, this.model.toJSON());
-            $(this.el).html(compiledTemplate);
+            @BEGIN_VERSION 4
+            $(this.el).html(_.template(template, this.model.toJSON()));
+            @END_VERSION 4
             return this.el;
         },
 
+        @BEGIN_VERSION 5
         reply: function () {
             var text = "@" + this.model.get("fromUser") + " ";
             new TweetEditorDialog({title: 'Retweet', text: text}).render();            
@@ -29,6 +33,7 @@ define([
             new TweetEditorDialog({title: 'Retweet', text: text}).render();            
             return false;
         }
+        @END_VERSION 5
     });
     
     return TweetView;
