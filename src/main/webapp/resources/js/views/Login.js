@@ -1,53 +1,54 @@
 define([
-    'require',
     'plugins/text!views/Login.html'
-], function(require, template){
+], function(template){
 
     var LoginView = Backbone.View.extend({
 
         el: '#container',
 
         events: {
-            'click input[type=submit]' : 'click'
+            @BEGIN_VERSION 3
+            'click button' : 'click'
+            @END_VERSION 3
         },
 
         render: function() {
-            $(this.el).empty();
-
-            // Using Underscore we can compile our template with data
-            var data = {};
-            var compiledTemplate = _.template( template, data );
-                // Append our compiled template to this Views "el"
-            $(this.el).append( compiledTemplate );
-
-            this.$('input[type=submit]').button();
+            $(this.el).html( template );
+            @BEGIN_VERSION 3
+            this.$('button').button();
+            @END_VERSION 3
         },
-
+        @BEGIN_VERSION 3
         click : function () {
             var that = this;
+            
+            var success = function(data, textStatus, jqXHR) {
+                if (data === "success") {
+                    that.clearErrorMessage();
+                    require("router").navigate("home", true);
+                } else {
+                    that.setErrorMessage("Error logging in");
+                }
+            };
+
+            var error = function (jqXHR, textStatus, errorThrown) {
+                that.setErrorMessage(textStatus);
+            };
+            
             $.ajax({
                 url : "signin/authenticate",
                 type : "POST",
                 data : that.$("form").serialize(),
-                beforeSend : function(xhr) {
-                    xhr.setRequestHeader("X-Ajax-call", "true");
-                },
-                success : function(data, textStatus, jqXHR) {
-                    if (data === "success") {
-                        require("router").navigate("home", true);
-                    } else {
-                        that.setErrorMessage("Error logging in");
-                    }
-                },
-                error : function (jqXHR, textStatus, errorThrown) {
-                    that.setErrorMessage(textStatus);
-                }
+                success : success,
+                error : error
             });
+            
             return false;
         },
-
+        @END_VERSION 3
         setErrorMessage : function (text) {
-            this.$('.login-error-box').find('.login-error-message').text(text).end().show();
+            this.$('.login-error-box').find('.login-error-message')
+                .text(text).end().show();
         },
         clearErrorMessage : function () {
             this.$('.login-error-box').hide();
