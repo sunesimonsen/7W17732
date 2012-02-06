@@ -175,3 +175,4 @@ Take a look at the <i>setErrorMessage</i> method to see how jQuery calls can be 
 Try to log in with a wrong user name and password. Then you should see the error message.
 
 Then try to login with one of the users shown on the login box. You should be redirected to the Twitter connect page.
+

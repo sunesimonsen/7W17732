@@ -48,7 +48,7 @@ define([
         @END_VERSION 3
         setErrorMessage : function (text) {
             this.$('.login-error-box').find('.login-error-message')
-                .text(text).end().show();
+                .text(text).end().slideDown();
         },
         clearErrorMessage : function () {
             this.$('.login-error-box').hide();

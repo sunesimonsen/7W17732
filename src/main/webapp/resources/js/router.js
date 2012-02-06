@@ -42,7 +42,7 @@ define([
                 });
             });
         },
-        @END_VERSION 3
+        @END_VERSION 2
         defaultAction: function(actions){
             @BEGIN_VERSION_ONLY 0
             $('body').append("<h2>You now have a running application</h2>");

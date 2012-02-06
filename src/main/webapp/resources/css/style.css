@@ -163,3 +163,7 @@ a:hover {
     margin-right: auto;
     resize:none;
 }
+
+.login-error-box .ui-state-error > div {
+    padding: 10px;
+}
