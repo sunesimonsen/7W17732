@@ -1,13 +1,21 @@
-# Introduction #
+## Introduction ##
 
-## Require.js ##
+* Require.js
+* Backbone.js
+* jQuery
+* jQueryUI
+* Blueprint
+* underscore.js
 
-## Backbone.js ##
+## Prerequisite ##
 
-## jQuery ##
+This lab requires some knowledge about JavaScript. Skill in CSS and HTML would also help.
 
-## jQueryUI ##
-## Blueprint ##
+Before arriving to the KHelg, please execute the following steps. 
+
+    git clone https://github.com/sunesimonsen/7W17732.git
+    cd 7W17732
+    mvn clean install 
 
 ## Start the lab ##
 
