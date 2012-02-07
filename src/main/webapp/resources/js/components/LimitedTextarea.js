@@ -9,7 +9,7 @@ $.widget('7W17732.limitedTextarea', {
         @BEGIN_VERSION 6
         var maxLength = textarea.attr('maxlength') ||
             this.options.maxLength;
-        textarea.attr('maxlength', maxLength);
+        textarea.removeAttr('maxlength');
 
         var indicator = $('<p>'+maxLength+'</p>');
         indicator.css({

@@ -311,16 +311,15 @@ I this step we are going to create a <a href="http://jqueryui.com/demos/widget/"
 
 Notice that this widget is not complete, error handling and destroy methods are not implemented.
 
-The widget will read the maxlength attribute of the target textarea, if it is not provided it will take the length from the options map.
-Then it will take the target textarea and surround it with a div containing a indicator element. This indicator element will be place in the bottom left cornor of the textarea and be updated on key presses.
+The widget will read the maxlength attribute of the target textarea, if it is not provided it will take the length from the options map. The maxlength attribute is removed to allow longer text then the max length, the validation should take care of the ensuring valid data. Then it will take the target textarea and surround it with a div containing a indicator element. This indicator element will be place in the bottom left cornor of the textarea and be updated on key presses.
 
 All code should be added to the <i>_create</i> method that will be called when the widget is created.
 
-We can retrieve the max length to following way and update the attribute on the textarea if it is not defined:
+We can retrieve the max length to following way and delete the attribute on the textarea the following way:
 
     var maxLength = textarea.attr('maxlength') ||
         this.options.maxLength;
-    textarea.attr('maxlength', maxLength);
+    textarea.removeAttr('maxlength');
     
 Now we create the component and indicator:
 
