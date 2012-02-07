@@ -286,12 +286,12 @@ Open client/js/views/TweetEditor.js in you editor.
 
 In the <i>tweet</i> method add a tweet to the home timeline collection using the <a href="http://documentcloud.github.com/backbone/#Collection-create">create method</a>.
 
-    var text = this.$('textarea').val();
+    var textArea = this.$('textarea');
     homeTimeline.create({
-        text: text
+        text: textArea.val()
     }, {wait: true});
     
-    this.$('textarea').val('');
+    this.$('textArea').val('');
     
 We retrieve the value of the textarea, create a data map with the value and send it of to the server using the create method. We instruct the collection to wait adding the tweet to the collection until the created version has been retrieved from the server. Finally we clear the textarea.
 
@@ -415,3 +415,21 @@ Refresh the page and see if you can reply and retweet.
 Goto the next step by running:
     
     mvn lab:next
+
+## Step 7: Add tweet validation ##
+
+In this step you should add validation to the tweet model before it is send to the server. Read the documentation for the <a href="http://documentcloud.github.com/backbone/#Model-validate">validate method</a>, and add the validation method to the model. The validation should check that the text to send is no more than 140 characters.
+
+When you have added the validation method, change the client/js/views/TweetEditor.js view to highlight the textarea when an invalid model is submitted. Furthermore only clear the textarea when the submit was successful. You can be inspired by the way the client/js/views/TweetEditorDialog.js handles errors. 
+
+Goto the next step by running:
+    
+    mvn lab:next
+    
+## Step 8: Now you are on your own ##
+
+Geek out and change the application in a way that suits you, just be aware the if you change steps in the lab, your changes will be thrown away.
+
+Hope you had fun!
+
+PS. If you are one of those geniuses that is finished in ten minutes, please use the remaining time to make an Emacs mode for the <a href="https://github.com/jayway/maven-lab-plugin">maven-lab-plugin</a> syntax ;-) 

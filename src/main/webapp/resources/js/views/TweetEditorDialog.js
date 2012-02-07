@@ -30,9 +30,15 @@ define([
                         var text = textarea.val();
                         homeTimeline.create({
                             text: text
-                        }, {wait: true});
-                        
-                        $(this).dialog("close");
+                        }, {
+                            wait: true,
+                            success: function () {
+                                $(this).dialog("close");
+                            },
+                            error: function () {
+                                textarea.limitedTextarea('error');
+                            }
+                        });
 					},
 				    Cancel: function() {
 					    $(this).dialog("close");

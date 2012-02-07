@@ -29,6 +29,9 @@ $.widget('7W17732.limitedTextarea', {
         component.find('textarea').replaceWith(textarea);
 
         var updateIndicator = function () {
+            @BEGIN_VERSION 7
+            textarea.removeClass('ui-state-error');
+            @END_VERSION 7
             var length  = textarea.val().length;
             var remains = maxLength - length;
             indicator.text(remains);
@@ -42,5 +45,10 @@ $.widget('7W17732.limitedTextarea', {
 
         updateIndicator();
         @END_VERSION 6
+    },
+    @BEGIN_VERSION 7
+    error : function () {
+        this.element.addClass('ui-state-error');
     }
+    @END_VERSION 7
 });
