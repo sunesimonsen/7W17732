@@ -194,11 +194,11 @@ Notice how the router is defined as a Require.js module that depends on the modu
 
 In the module we create a Backbone router that is returned to other modules that depends on the router.
 
-I added a call to navigate to the home page, but the home page should only be accessible to authenticated users. So we will redirect the user to the login page if he is not authenticated.
+I added a call to navigate to the home page, but the home page should only be accessible to authenticated users. So we will redirect the user to the login page if they are not authenticated.
 
-We will use the helper method <i>redirectIfNot</i> to make the redirect is the given constaints are not fulfilled. This method makes a call to the server in order to figure out the current state of the application and users the <a href="http://documentcloud.github.com/backbone/#Router-navigate">navigate</a>. method on the router to handle the redirect.
+We will use the helper method <i>redirectIfNot</i> to make the redirect if the given constraints are not fulfilled. This method makes a call to the server in order to figure out the current state of the application and users the <a href="http://documentcloud.github.com/backbone/#Router-navigate">navigate</a> method on the router to handle the redirect.
 
-Put the following line in the home method: 
+Move the following line in the home method: 
 
     $('body').append("<h2>This is the home screen</h2>");
 
