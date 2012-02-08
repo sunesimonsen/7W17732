@@ -430,9 +430,9 @@ In the <i>tweet</i> method add a tweet to the home timeline collection using the
         text: textArea.val()
     }, {wait: true});
     
-    this.$('textArea').val('');
+    textArea.val('');
     
-We retrieve the value of the textarea, create a data map with the value and send it of to the server using the create method. We instruct the collection to wait adding the tweet to the collection until the created version has been retrieved from the server. Finally we clear the textarea.
+We retrieve the value of the textarea, create a data map with the value and send it of to the server using the create method. We instruct the collection to wait with adding the tweet to the collection until the created version has been retrieved from the server. Finally we clear the textarea.
 
 Refresh the page and try tweeting something.
 
