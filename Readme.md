@@ -245,7 +245,7 @@ First of all let's change the Login button to a <a href="http://jqueryui.com/dem
 
     this.$('button').button();
 
-Backbone provides us with a reference to jQuery that is relative to the root element of this view. You could achieve the same by issuing the following command: 
+Backbone provides us with a reference to jQuery that is relative to the root element of this view. The above statement has the following meaning: in the root element of this view, find all button elements and turn them into jQueryUI buttons. You could achieve the same by issuing the following command: 
 
     $('button', this.el).button();
 
