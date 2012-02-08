@@ -9,6 +9,8 @@ This is still work in progress and will be finished the very last minute. That i
 
 This lab requires some knowledge about JavaScript. Skill in CSS and HTML would also help.
 
+You also need a Twitter account. If you don't want to mess with you existing account just create a new one. But be sure to follow a few people so you timeline will not be empty.
+
 It is a good idea to have Firebug installed if you are using Firefox.
 
 Before arriving to the KHelg, please execute the following steps. 
@@ -267,7 +269,7 @@ Add the following code to the events field.
         'click button' : 'click'
     }
     
-This binds the click event of the elements below the root element that matches the CSS selector <i>button</i> to the click method on this view.
+This binds the <i>click</i> event of the elements below the root element that matches the CSS selector <i>button</i> to the <i>click</i> method on this view.
 
 Now add a click method to the view: 
 
@@ -313,7 +315,7 @@ Take a look at the <i>setErrorMessage</i> method to see how jQuery calls can be 
 
 Try to log in with a wrong user name and password. Then you should see the error message.
 
-Then try to login with one of the users shown on the login box. You should be redirected to the Twitter connect page. 
+Then try to login with one of the users shown on the login box. You should be redirected to the Twitter connect page. Please connect to you Twitter account.
 
 Goto the next step by running:
     
