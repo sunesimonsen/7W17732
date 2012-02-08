@@ -190,7 +190,7 @@ Goto the next step by running:
 
 Open the file client/js/router in your editor. 
 
-Notice how the router is defined as a Require.js module that depends on the modules <i>require</i> and <i>redirectIfNot</i>.
+Notice how the router is defined as a Require.js module that depends on the module <i>redirectIfNot</i>.
 
 In the module we create a Backbone router that is returned to other modules that depends on the router.
 

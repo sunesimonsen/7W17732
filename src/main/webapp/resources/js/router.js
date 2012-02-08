@@ -1,7 +1,6 @@
 define([
-    'require',
     'redirectIfNot'
-], function(require, redirectIfNot){
+], function(redirectIfNot){
     var AppRouter = Backbone.Router.extend({
         routes: {
             @BEGIN_VERSION 1
