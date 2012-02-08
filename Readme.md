@@ -121,18 +121,21 @@ We will go much more in details with Backbone in the lab.
 
 ### jQueryUI ###
 
-jQueryUI makes available a lot of useful components, with very nice theme framework. A lot of times standard components will not be enough to solve your problem, to handle that, jQuery provides a widget factory to create your own custom UI components. We will look into how that works later in the lab.
+<a href="http://jqueryui.com/">jQueryUI</a> makes available a lot of useful components, with very nice theme framework. A lot of times standard components will not be enough to solve your problem, to handle that, jQuery provides a widget factory to create your own custom UI components. We will look into how that works later in the lab.
 
 ### Underscore.js ###
 
-Backbone make use of the utility and collection library Underscore.js that by it self is a very nice library, but in conjunction with Backbone is just plain awesome. We will mainly make you of Underscores templating capabilities.
+Backbone make use of the utility and collection library <a href="http://underscorejs.org/">Underscore.js</a> that by it self is a very nice library, but in conjunction with Backbone is just plain awesome. We will mainly make you of Underscores templating capabilities.
 
-### Blueprint ###
+### Blueprint.css ###
 
+CSS is also one of those spaghetti creators. One could make use of something like <a href="http://sass-lang.com/">Sass</a> to get a better CSS structuring but to limit the technology overflow I left it out.
 
-
+One thing you always must do in a project that uses CSS is to use a stylesheet that resets all the different browser to a common ground. Blueprint provides such a stylesheet in addition to a grid layout that can also be usefull <a href="http://blueprintcss.org/">Blueprint</a>. A little more involved starting point is <a href="http://html5boilerplate.com/">Boilerplate</a> that is also good to read up on.
 
 ## Start the lab ##
+
+Now we are ready to start that lab :-)
 
 Run the following command in the console to start the lab: 
 
