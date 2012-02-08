@@ -348,7 +348,9 @@ The first thing we need to specify is the model for the elements in the collecti
         url: 'twitter/timeline/home'
     });
 
-When the <a href="http://documentcloud.github.com/backbone/#Collection-fetch">fetch</a> is called on the collection a HTTP GET will be issued to the url of the collection. For each element in the returned JSON a model will be created. There is just one problem, the server does not return a JSON array but a root element. So we need to add a parse method to the collection to retrieve the array:
+When the <a href="http://documentcloud.github.com/backbone/#Collection-fetch">fetch</a> method is called on the collection a HTTP GET will be issued to the url of the collection. For each element in the returned JSON response a model will be created. 
+
+There is just one problem, the server does not return a JSON array but a root element. So we need to add a parse method to the collection to retrieve the array:
 
     parse: function(response) {
         return response.tweetList;
