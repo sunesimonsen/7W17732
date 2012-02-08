@@ -315,7 +315,11 @@ Take a look at the <i>setErrorMessage</i> method to see how jQuery calls can be 
 
 Try to log in with a wrong user name and password. Then you should see the error message.
 
-Then try to login with one of the users shown on the login box. You should be redirected to the Twitter connect page. Please connect to you Twitter account.
+Then try to login with one of the users shown on the login box. You should be redirected to the Twitter connect page. Please connect to you Twitter account. 
+
+When you are redirected to the home page you should see the following message: 
+
+    Home - nothing to be seen here
 
 Goto the next step by running:
     
@@ -337,7 +341,7 @@ Now open the client/js/collections/HomeTimeline.js file in you editor.
 
 As you can see the module depends on the tweet model and defines a new <a href="http://documentcloud.github.com/backbone/#Collection">Backbone collection</a>.
 
-The first thing we need to specify the the model the elements in the collection should use and the url on the server that the collection maps to and :
+The first thing we need to specify is the model for the elements in the collection. Then we specify the url on the server that the collection maps to:
 
     var HomeTimeline = Backbone.Collection.extend({
         model: Tweet,
