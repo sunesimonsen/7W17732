@@ -100,7 +100,7 @@ As you can see jQuery is a very powerful tool and is the basis for many JavaScri
 
 Let's just take a look at what is going on above. <b>$</b> is a reference to jQuery. We uses jQuery to select a group of elements to work on using a CSS3 selector. Then we instruct jQuery what to do with the selected elements.
 
-So the statement below means: Select all elements with the all links that is nested with in an element with the css class topNavigation and change the text color to pink.
+So the statement below means: Select all links that is nested with in an element with the css class topNavigation and change the text color to pink.
 
     $('.topNavigation a').css({color: 'pink'})
 
