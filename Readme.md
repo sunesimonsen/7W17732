@@ -490,7 +490,7 @@ Then we will append this structure just after the target textarea, and the repla
     
 This will move the target textarea into the structure.
 
-We need to update the indicator on keystrokes:
+Now we need to update the indicator on keystrokes:
 
     var updateIndicator = function () {
         var length  = textarea.val().length;
