@@ -237,7 +237,7 @@ Goto the next step by running:
 
 Open the file client/views/Login.js in you editor.
 
-This module has a special dependency, that uses the Require.js <a href="http://requirejs.org/docs/api.html#text">text</a> plugin. This plugin is capable of loading text files as strings. This is really useful loading html template files, and in this case the views/Login.html file.
+This module has a special dependency, that uses the Require.js <a href="http://requirejs.org/docs/api.html#text">text</a> plugin. This plugin is capable of loading text files as strings. This is really useful for loading html template files, and in this case the views/Login.html file.
 
 In the module we define a new <a href="http://documentcloud.github.com/backbone/#View">Backbone view</a> that is attacted to the element in the index.html page with the id <i>container</i>. In the <a href="http://documentcloud.github.com/backbone/#View-render">render</a> function for this view we replace the content of the root element with the loaded template.
 

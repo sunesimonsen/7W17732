@@ -13,7 +13,9 @@ define([
         },
 
         render: function() {
-            $(this.el).html( template );
+            // Replace the content of this views
+            // root element with the loaded template 
+            $(this.el).html(template);
             @BEGIN_VERSION 3
             this.$('button').button();
             @END_VERSION 3
