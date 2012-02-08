@@ -66,7 +66,7 @@ Here is a couple of selectors:
     #foo .bar // selects elements with the css class foo inside an element with the id bar
     .bar > a // selects links that are a child of an element with the css class bar
 
-There are more, but these are the most important selectors. You can find more information at http://api.jquery.com/category/selectors/
+There are more selectors, but these are the most important. You can find more information at http://api.jquery.com/category/selectors/
 
 This page shows the selectors in effect: http://codylindley.com/jqueryselectors/
 
