@@ -17,6 +17,12 @@ Before arriving to the KHelg, please execute the following steps.
     cd 7W17732
     mvn clean install 
     
+When you arrive you should do a the following to synchronize with the latest changes:
+
+cd 7W17732
+git pull 
+mvn clean install 
+    
 ## Introduction ##
 
 I this lab we will explore how to build a larger single page JavaScript application. We will use a couple of different libraries that I think is appropriate for the job (That does not mean competitive  alternatives does not exists). 
