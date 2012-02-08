@@ -9,7 +9,10 @@ define([
         el: '#container',
         
         render: function() {
-            $(this.el).html( template );
+            @BEGIN_VERSION_ONLY 2
+            $('body').append("<h2>Home - nothing to be seen here</h2>");
+            @END_VERSION_ONLY 2
+            $(this.el).html(template);
             @BEGIN_VERSION 4
             this.$('.tweetEditor').html(tweetEditor.render());
             @END_VERSION 4
