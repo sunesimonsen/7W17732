@@ -1,7 +1,7 @@
 
 ## Disclaimer ##
 
-This is still work in progress and will be finished the very last minute. That is just how I work :-). So spelling mistakes and the code actually work will be fixed later.
+This is still work in progress and will be finished the very last minute. That is just how I work :-). So spelling mistakes and the code actually working will be fixed later.
 
 ---------------------------------------
 
