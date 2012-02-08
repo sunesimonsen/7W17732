@@ -1,8 +1,22 @@
+## Prerequisite ##
+
+This lab requires some knowledge about JavaScript. Skill in CSS and HTML would also help.
+
+It is a good idea to have Firebug installed if you are using Firefox.
+
+Before arriving to the KHelg, please execute the following steps. 
+
+    git clone https://github.com/sunesimonsen/7W17732.git
+    cd 7W17732
+    mvn clean install 
+    
 ## Introduction ##
+
+I this lab we will explore how 
 
 ### Require.js ###
 
-Require.js is a JavaScript you for asynchroniously loading application modules and handling dependency management.
+<a href="http://requirejs.org/">Require.js</a> is a JavaScript you for asynchronously loading application modules and handling dependency management.
 
 You define modules using the define method: 
 
@@ -14,7 +28,7 @@ file world.js:
 
 File hello.js
 
-    define([world'], function (world) {
+    define(['world'], function (world) {
         return "Hello " + world;
     });
     
@@ -43,13 +57,12 @@ This will result in the following line it the browser log:
 jQuery is a JavaScript libray for manipulating the HTML DOM in a browser independent way. 
 
 
-Open www.jayway.com in Firefox or Chrome. Try running the following lines in the the developer console one by one. Open the console in Chrome by pressing CS-j and CS-k in Firefox.
+Open www.jayway.com in Firefox or Chrome. Try running the following lines in the developer console one by one. Open the console in Chrome by pressing CS-j and CS-k in Firefox.
 
     $('.topNavigation a').css({color: 'pink'})
     $("h1 a").fadeOut("slow").fadeIn("slow")
     $('#siteBody .homePageBox .content').css({border: 'thick solid pink'})
-    $('#siteBody .homePageBox .content h3:eq(2)').text(".:jQuery:.");
-    $('#siteBody .homePageBox .content     h3:eq(1)').text(".:jQuery:.").css({color: 'red', textAlign: 'center'});
+    $('#siteBody .homePageBox .content h3:eq(1)').text(".:jQuery:.").css({color: 'red', textAlign: 'center', fontSize: '3em'});
 
 As you can see jQuery is a very powerful tool and is the basis for many JavaScript frameworks. 
 
@@ -72,21 +85,13 @@ This page shows the selectors in effect: http://codylindley.com/jqueryselectors/
 
 ### Backbone.js ###
 
+jQuery is fine and all, but if you are going to make a larger JavaScript application it is just not sufficient. It is extremely easy to make spaghetti code, some might say it's a kind of a pasta machine. To take care of the overall structuring you can use a framework like <a href="http://documentcloud.github.com/backbone/">Backbone</a>. Backbone is a MVC framework, it is a little different than a usual MVC as the C stands for collections instead of controller. Backbone is very light weight and easy to understand. 
+
+...
+
 ### jQueryUI ###
 ### Blueprint ###
 ### underscore.js ###
-
-## Prerequisite ##
-
-This lab requires some knowledge about JavaScript. Skill in CSS and HTML would also help.
-
-It is a good idea to have Firebug installed if you are using Firefox.
-
-Before arriving to the KHelg, please execute the following steps. 
-
-    git clone https://github.com/sunesimonsen/7W17732.git
-    cd 7W17732
-    mvn clean install 
 
 ## Start the lab ##
 
