@@ -208,7 +208,7 @@ into the callback for the <i>redirectIfNot</i> method:
         $('body').append("<h2>This is the home screen</h2>");
     });
 
-We also need to add a new route for login to the router the is connected to the showLogin method:
+We also need to add a new route for <i>login</i> to the router that is connected to the <i>showLogin</i> method:
 
     routes: {
         'home': 'home',
