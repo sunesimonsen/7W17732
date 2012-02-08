@@ -1,15 +1,81 @@
 ## Introduction ##
 
-* Require.js
-* Backbone.js
-* jQuery
-* jQueryUI
-* Blueprint
-* underscore.js
+### Require.js ###
+
+Require.js is a JavaScript you for asynchroniously loading application modules and handling dependency management.
+
+You define modules using the define method: 
+
+file world.js:
+
+    define([], function () {
+        return "World";
+    });
+
+File hello.js
+
+    define([world'], function (world) {
+        return "Hello " + world;
+    });
+    
+File app.js
+
+    require(["hello"], function (hello) {
+        console.log(hello);
+    });
+    
+File index.html
+
+    <html>
+        <head>
+            <script data-main="app" src="require.js"></script>
+        </head>
+    </html>
+
+When you open index.html in a browser require.js will load the file app.js, that in turn will require the <i>hello</i> module. The <i>hello</i> module requires the <i>world</i> modules. Require.js therefore downloads hello.js and world.js files and evaluates the define method of world.js. Then the define method of hello.js is evaluated  with the result of world.js as argument.  
+
+This will result in the following line it the browser log:
+
+    Hello World
+
+### jQuery ###
+
+jQuery is a JavaScript libray for manipulating the HTML DOM in a browser independent way. 
+
+
+Open www.jayway.com in Firefox or Chrome. Try running the following lines in the the developer console one by one. Open the console in Chrome by pressing CS-j and CS-k in Firefox.
+
+    $('.topNavigation a').css({color: 'pink'})
+    $("h1 a").fadeOut("slow").fadeIn("slow")
+    $('#siteBody .homePageBox .content').css({border: 'thick solid pink'})
+    $('#siteBody .homePageBox .content h3:eq(2)').text(".:jQuery:.");
+    $('#siteBody .homePageBox .content     h3:eq(1)').text(".:jQuery:.").css({color: 'red', textAlign: 'center'});
+
+As you can see jQuery is a very powerful tool and is the basis for many JavaScript frameworks. 
+
+Let's just take a look at what is going on above. <b>$</b> is a reference to jQuery. We uses jQuery to select a group of elements to work on using a CSS3 selector. Then we instruct jQuery what to do with the selected elements.
+
+So the statement below means: Select all elements with the all links that is nested with in an element with the css class topNavigation and change the text color to pink.
+
+    $('.topNavigation a').css({color: 'pink'})
+
+Here is a couple of selectors: 
+
+    #foo // selects the element with the id foo
+    .foo // selects elements with the css class foo
+    #foo .bar // selects elements with the css class foo inside an element with the id bar
+
+### Backbone.js ###
+
+### jQueryUI ###
+### Blueprint ###
+### underscore.js ###
 
 ## Prerequisite ##
 
 This lab requires some knowledge about JavaScript. Skill in CSS and HTML would also help.
+
+It is a good idea to have Firebug installed if you are using Firefox.
 
 Before arriving to the KHelg, please execute the following steps. 
 
@@ -39,7 +105,7 @@ Open the file client/js/app.js and add the following lines to the end of the fil
 
 This will require the router module asynchronously and call the given function with the loaded module. In order to start listening for url changes we start the <a href="http://documentcloud.github.com/backbone/#History">Backbone history</a> tracking when the router is loaded.
 
-That the application with the following command in a console an let it run in the backgroud. There should be no need to restart the server: 
+Start the application with the following command in a console an let it run in the backgroud. There should be no need to restart the server: 
     
     mvn jetty:run
 
