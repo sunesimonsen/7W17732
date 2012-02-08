@@ -204,7 +204,7 @@ Move the following line in the home method:
 
 into the callback for the <i>redirectIfNot</i> method:
 
-    redirectIfNot(this, ["authenticated"], function () {
+    redirectIfNot(["authenticated"], function () {
         $('body').append("<h2>This is the home screen</h2>");
     });
 
@@ -217,7 +217,7 @@ We also need to add a new route for <i>login</i> to the router that is connected
         '*actions': 'defaultAction'
     },
 
-Finally we need to implement the showLogin method. Instead of loading all the view when we load the main module, we can chose to load modules on demand. Add the following method to the router:
+Finally we need to implement the showLogin method. Instead of loading all the views when we load the main module, we can chose to load modules on demand. Add the following method to the router:
 
     showLogin: function(){
         require(['views/Login'], function (view) {
