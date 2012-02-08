@@ -12,7 +12,26 @@ Before arriving to the KHelg, please execute the following steps.
     
 ## Introduction ##
 
-I this lab we will explore how 
+I this lab we will explore how to build a larger single page JavaScript application. We will use a couple of different libraries that I think is appropriate for the job (That does not mean competitive  alternatives does not exists). 
+
+JavaScript seems to be growing in popularity, but almost all the project I have seen that uses JavaScript to a larger extend, is suffering from structural problems. People kind of forget their good engineering practices when their get down and dirty with JavaScript. That is plain wrong, JavaScript is extremely dynamic and should be approached with caution.
+
+We will build a Twitter client using the following technologies 
+
+* Require.js
+* jQuery 
+* Backbone
+* jQueryUI
+* Underscore.js
+* Blueprint.css
+
+Each of the libraries will be explained below.
+
+The lab uses the <a href="https://github.com/jayway/maven-lab-plugin">maven-lab-plugin</a> and gradually progress towards a final Twitter client. 
+
+<strong>Upon finishing a step all of your changes will be replace by a correct solution</strong>. That means you don't have to complete a step correctly in order to advance to the next step.
+
+Hope you will have fun!
 
 ### Require.js ###
 
@@ -87,11 +106,31 @@ This page shows the selectors in effect: http://codylindley.com/jqueryselectors/
 
 jQuery is fine and all, but if you are going to make a larger JavaScript application it is just not sufficient. It is extremely easy to make spaghetti code, some might say it's a kind of a pasta machine. To take care of the overall structuring you can use a framework like <a href="http://documentcloud.github.com/backbone/">Backbone</a>. Backbone is a MVC framework, it is a little different than a usual MVC as the C stands for collections instead of controller. Backbone is very light weight and easy to understand. 
 
-...
+Backbone consist of different types of objects:
+
+* Router - routing page fragments to handlers
+* View - controlling a part of the web page
+* Collection - maps a collections of models to a collection resource on the server
+* Model - represent a model on the server
+
+A request is received by the router, that in turn invokes a view to display. The view can consist of any number of sub views. Each of the views can be bound to a model or a collection. 
+
+The views can listen for event from the models, collections and DOM elements. When a model is updated all the views that listen for events on that model are notified.
+
+We will go much more in details with Backbone in the lab.
 
 ### jQueryUI ###
+
+jQueryUI makes available a lot of useful components, with very nice theme framework. A lot of times standard components will not be enough to solve your problem, to handle that, jQuery provides a widget factory to create your own custom UI components. We will look into how that works later in the lab.
+
+### Underscore.js ###
+
+Backbone make use of the utility and collection library Underscore.js that by it self is a very nice library, but in conjunction with Backbone is just plain awesome. We will mainly make you of Underscores templating capabilities.
+
 ### Blueprint ###
-### underscore.js ###
+
+
+
 
 ## Start the lab ##
 
@@ -322,7 +361,7 @@ First we find the ul element just below the root element. Notice it is important
 
 Finally we need to implement the TweetView. Open the client/js/TweetView.js file in your editor.
 
-We will use the <a href="http://underscorejs.org/#template">template</a> method of the <a href="http://underscorejs.org/">underscore.js</a> library to render the tweet views. 
+We will use the <a href="http://underscorejs.org/#template">template</a> method of the <a href="http://underscorejs.org/">Underscore.js</a> library to render the tweet views. 
 
 Take a look at the file client/views/TweetView.html and notice that it contains inline JavaScript code.
 
@@ -330,7 +369,7 @@ We would like to compile the template against a JSON version of the model. That 
 
     $(this.el).html(_.template(template, this.model.toJSON()));
 
-This line turns the model into JSON compiles the template against the data using the underscore.js library and places the html in the root element of the view. 
+This line turns the model into JSON compiles the template against the data using the Underscore.js library and places the html in the root element of the view. 
 
 If you refresh the home page, you should see your home timeline.
 
