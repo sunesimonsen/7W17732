@@ -6,18 +6,9 @@ define([
 
         el: '#container',
         
-        events: {
-        },
-
         render: function() {
-            $(this.el).empty();
-            
-            // Using Underscore we can compile our template with data
-            var data = {};
-            var compiledTemplate = _.template( template, data );
-            // Append our compiled template to this Views "el"
-            $(this.el).append( compiledTemplate );
-        },
+            $(this.el).html(template);
+        }
     });
 
     return new ConnectView();

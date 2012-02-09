@@ -225,7 +225,9 @@ Finally we need to implement the *showLogin* method. Instead of loading all the 
         });
     },
 
-Notice how we get the *login* view dependency in the callback method and call render on the view.
+Notice how we get the *login* view dependency in the callback method and call render on the view. 
+
+Before rendering each view we clear the container element to ensure that old DOM elements are removed and event handlers on the container is unbinded. See the *clearContainer* method for the details.
 
 When you refresh the browser you should be redirected to the *login* page.
 
