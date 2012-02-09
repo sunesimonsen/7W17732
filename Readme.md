@@ -210,7 +210,7 @@ into the callback for the *redirectIfNot* method:
         $('body').append("<h2>This is the home screen</h2>");
     });
 
-We also need to add a new route for *login* to the router that is connected to the *showLogin* method:
+We also need to add a new route *login* to the router. The *login* route should be connected to the *showLogin* method:
 
     routes: {
         'home': 'home',
@@ -227,7 +227,7 @@ Finally we need to implement the *showLogin* method. Instead of loading all the 
         });
     },
 
-Notice how we get the *login* view dependency in the callback method and call render on the view. 
+Notice how we get the *login* view dependency in the callback method and call *render* on the view. 
 
 Before rendering each view we clear the container element to ensure that old DOM elements are removed and event handlers on the container is unbinded. See the *clearContainer* method for the details.
 
@@ -243,9 +243,9 @@ Open the file `client/views/Login.js` in you editor.
 
 This module has a special dependency, that uses the Require.js <a href="http://requirejs.org/docs/api.html#text">text</a> plugin. This plugin is capable of loading text files as strings. This is really useful for loading html template files, and in this case the views/Login.html file.
 
-In the module we define a new <a href="http://documentcloud.github.com/backbone/#View">Backbone view</a> that is attacted to the element in the index.html page with the id *container*. In the <a href="http://documentcloud.github.com/backbone/#View-render">render</a> function for this view we replace the content of the root element with the loaded template.
+In the module we define a new <a href="http://documentcloud.github.com/backbone/#View">Backbone view</a> that is attacted to the element in the *index.html* page with the id *container*. In the <a href="http://documentcloud.github.com/backbone/#View-render">render</a> function for this view we replace the content of the root element with the loaded template.
 
-First of all let's change the *Login* button to a <a href="http://jqueryui.com/demos/button/">jQuery UI button</a> by added the following line to the render method. 
+First of all, let's change the *Login* button to a <a href="http://jqueryui.com/demos/button/">jQuery UI button</a> by adding the following line to the render method. 
 
     this.$('button').button();
 
@@ -255,15 +255,15 @@ Backbone provides us with a reference to jQuery that is relative to the root ele
 
 That means: find the button element in the root element of the view and turn it into a jQueryUI button.
 
-It is a really good idea to make almost all you jQuery code be relative to an element that is a close ancestor to the elements you would like to work on. That make the code much more modular and helps avoiding situations where different parts of the code affect other parts unexpectedly. The same can be said for CSS, always limit your styles as much as possible.
+It is a really good idea to make almost all you jQuery code be relative to an element that is a close ancestor to the elements you would like to work on. That makes the code much more modular and helps avoiding situations where different parts of the code affect other parts unexpectedly. The same can be said for CSS, always limit your styles as much as possible.
 
-Now let's add a click handler for the button. With plain jQuery would you just added the <a href="http://api.jquery.com/click/">click handler</a> to the element as seen below:
+Now let's add a click handler for the button. With plain jQuery, you would just added the <a href="http://api.jquery.com/click/">click handler</a> to the element as seen below:
 
     $('button', this.el).click(function () {
         ...
     });
 
-But as this is really common Backbone support adding event handlers to elements below the root element of a view in an easy way.
+But as this is really common, Backbone support adding event handlers to elements below the root element of a view in an easy way.
 
 Add the following code to the events field.
 
@@ -283,7 +283,7 @@ Make sure that the click handler is fired when clicking on the button.
 
 Finally we will make an <a href="http://api.jquery.com/jQuery.ajax/">AJAX</a> call to the Spring authenticate method on the server.
 
-Added the following click method to the view:
+Add the following *click* method to the view:
 
     click : function () {
     	var that = this;
@@ -315,9 +315,9 @@ We <a href="http://api.jquery.com/serialize/">serialize</a> the form to be `www-
 
 Take a look at the *setErrorMessage* method to see how jQuery calls can be chained together.
 
-Try to log in with a wrong user name and password. Then you should see the error message.
+Try to log in with a wrong user name and password. Then you should see an error message.
 
-Then try to log in with one of the users shown on the *login* box. You should be redirected to the Twitter connect page. Please connect to you Twitter account. 
+Then try to log in with one of the users shown on the *login* box. Then you should be redirected to the Twitter connect page. Please connect to you Twitter account. 
 
 When you are redirected to the home page you should see the following message: 
 
@@ -329,13 +329,13 @@ Go to the next step by running:
 
 ## Step 3: Showing Twitter timeline ##
 
-I this step we will use Backbone's collections and models to retrieve tweets from the server and show them on the home page.
+In this step we will use Backbone collections and models to retrieve tweets from the server and show them on the home page.
 
 First we need to implement the model for a tweet.
 
 Open the file `client/js/models/Tweet.js` in your editor.
 
-Making a new model is easy. A <a href="http://documentcloud.github.com/backbone/#Model">Backbone model</a> provides sensible defaults and a lot of features out of the box. 
+Making a new model is easy, because t <a href="http://documentcloud.github.com/backbone/#Model">Backbone model</a> provides sensible defaults and a lot of features out of the box. 
 
 You don't actually need to change anything here, because the defaults are sufficient. But notice that we return the prototype for a tweet instead of a new instance of the tweet. That is because we need to create multiple instances of the tweet model.
 
@@ -350,9 +350,9 @@ The first thing we need to specify is the model for the elements in the collecti
         url: 'twitter/timeline/home'
     });
 
-When the <a href="http://documentcloud.github.com/backbone/#Collection-fetch">fetch</a> method is called on the collection a HTTP GET will be issued to the *url* of the collection. For each element in the returned JSON response a model will be created. 
+When the <a href="http://documentcloud.github.com/backbone/#Collection-fetch">fetch</a> method is called on the collection a HTTP GET will be issued to the URL of the collection. For each element in the returned JSON response a model will be created. 
 
-There is just one problem, the server does not return a JSON array but a root element. So we need to add a parse method to the collection to retrieve the array:
+There is just one problem, the server does not return a JSON array but a root element containing an array. So we need to add a parse method to the collection to retrieve the array:
 
     parse: function(response) {
         return response.tweetList;
@@ -366,7 +366,7 @@ Finally we want to sort the tweets by their creation time:
 
 Now we just need to render the tweets. Open the `client/js/views/TimelineView.js` file in your editor.
 
-First of all <a href="http://documentcloud.github.com/backbone/#Events-on">bind</a> the *reset* event on the *timeTimeline* collection to the render method and call fetch on the collection: 
+First of all <a href="http://documentcloud.github.com/backbone/#Events-on">bind</a> the *reset* event on the *timeTimeline* collection to the render method and call *fetch* on the collection: 
 
     initialize: function() {
         homeTimeline.on('reset', this.render, this);
@@ -383,7 +383,7 @@ We can then in the render method display the tweets on the view. Add the followi
         timeline.append(view.render());
     });
     
-First we find the *ul* element just below the root element. Notice it is important to be quite strict when selecting elements in views that contains sub views. Then we traverse all the elements of the home timeline collection, create a new *TweetView* for each model and append the rendered view to the timeline element.
+First we find the *ul* element just below the root element. Notice it is important to be quite strict when selecting elements in views that contains sub views to avoid selecting elements in the sub views. Then we traverse all the elements of the timeline collection, create a new *TweetView* for each model, and append the rendered view to the timeline element.
 
 Finally we need to implement the *TweetView*. Open the `client/js/TweetView.js` file in your editor.
 
@@ -397,7 +397,7 @@ We would like to compile the template against a JSON version of the model. That 
 
 This line turns the model into JSON compiles the template against the data using the Underscore.js library and places the HTML in the root element of the view. 
 
-If you refresh the home page, you should see your home timeline.
+If you refresh the home page, you should see your timeline.
 
 Go to the next step by running:
     
@@ -405,13 +405,13 @@ Go to the next step by running:
     
 ## Step 4: Tweeting your first tweet ##
 
-We will start by adding support in the timeline view to listen for *add* events on the home timeline collection.
+We will start by adding support in the timeline view to listen for *add* events on the timeline collection.
 
-Open the `client/js/TimelineView.js` and add the following line to the top of the initialize method.
+Open the `client/js/TimelineView.js` and add the following line to the top of the *initialize* method.
 
     homeTimeline.on('add', this.add, this);
 
-Now when new models are added to the home timeline collection the *add* method on the view will be called.
+Now when new models are added to the timeline collection the *add* method on the view will be called.
 
 In the *add* method we will prepend a new tweet view to the timeline. 
 
@@ -421,11 +421,11 @@ In the *add* method we will prepend a new tweet view to the timeline.
   
 First we create the view and render it. In order to get a nice slide down effect, we hide the newly created view prepend it to the timeline and call the slide down effect on the element.
 
-Now we only need to send a tweet to server when the user click on the *Tweet* button in the tweet editor.
+Now we only need to send a tweet to server when the user clicks on the *Tweet* button in the tweet editor.
 
 Open `client/js/views/TweetEditor.js` in you editor.
 
-In the *tweet* method add a tweet to the home timeline collection using the <a href="http://documentcloud.github.com/backbone/#Collection-create">create method</a>.
+In the *tweet* method add a tweet to the timeline collection using the <a href="http://documentcloud.github.com/backbone/#Collection-create">create method</a>.
 
     var textArea = this.$('textarea');
     homeTimeline.create({
@@ -434,7 +434,7 @@ In the *tweet* method add a tweet to the home timeline collection using the <a h
     
     textArea.val('');
     
-We retrieve the value of the text area, create a data map with the value and send it of to the server using the create method. We instruct the collection to wait with adding the tweet to the collection until the created version has been retrieved from the server. Finally we clear the text area.
+We retrieve the value of the text area, create a data map with the text value and send it of to the server using the create method. We instruct the collection to wait with adding the tweet to the collection until the created version has been received from the server. Finally we clear the text area.
 
 Refresh the page and try tweeting something.
 
@@ -452,11 +452,11 @@ I this step we are going to create a <a href="http://jqueryui.com/demos/widget/"
 
 Notice that this widget is not complete, error handling and destroy methods are not implemented.
 
-The widget will read the *maxlength* attribute of the target textarea, if it is not provided it will take the length from the options map. The maxlength attribute is removed to allow longer text then the max length, the validation should take care of the ensuring valid data. Then it will take the target textarea and surround it with a div containing an indicator element. This indicator element will be place in the bottom left cornor of the textarea and be updated on key presses.
+The widget will read the *maxlength* attribute of the target textarea, if the attribute is not provided it will take the length from the options map. The *maxlength* attribute is removed to allow longer text then the max length; the validation should take care of the ensuring valid data. Then it will take the target text area and surround it with a div containing an indicator element. This indicator element will be placed in the bottom left corner of the text area and be updated on key presses.
 
 All code should be added to the *_create* method that will be called when the widget is created.
 
-We can retrieve the max length and delete the attribute on the textarea the following way:
+We can retrieve the max length and delete the attribute on the text area the following way:
 
     var maxLength = textarea.attr('maxlength') ||
         this.options.maxLength;
@@ -485,12 +485,12 @@ This will create the following structure:
         </p>
     </div>
     
-Then we will append this structure just after the target textarea, and the replace the textarea in the structure with the target text area:
+Then we will append this structure just after the target text area, and the replace the text area in the structure with the target text area:
 
     component.insertAfter(textarea);
     component.find('textarea').replaceWith(textarea);
     
-This will move the target textarea into the structure.
+This will move the target text area into the structure.
 
 Now we need to update the indicator on keystrokes:
 
@@ -506,7 +506,7 @@ Now we need to update the indicator on keystrokes:
     textarea.keyup(updateIndicator);
     textarea.keydown(updateIndicator);
 
-The updateIndicator function calculates how much of the max length remains and updates the indicator accordingly.
+The *updateIndicator* function calculates how much of the max length remains and updates the indicator accordingly.
 
 Finally we update the indicator:
 
@@ -524,7 +524,7 @@ Go to the next step by running:
 
 ## Step 6: Creating a retweet dialog ##
 
-I have added a reply and a retweet link to the TweetView. When click they should open a dialog with the appropriate text.
+I have added a reply and a retweet link to the TweetView. When clicked they should open a dialog with the appropriate text.
 
 Take a look at the methods in `client/js/views/TweetView.js` and implement the retweet function. 
 
@@ -534,22 +534,22 @@ The text of the retweet should be something like:
     
 Open `client/js/views/TweetEditorDialog.js` to implement the dialog. Use the documentation on the <a href="http://jqueryui.com/demos/dialog/">jQuery UI page</a> to implement this step.
 
-Set the value of the textarea under the root element to the text property of the view options when the dialog opens. Remember to use *that* instead of *this* for code in a nested scopes when refering to the view. 
+Set the value of the text area to the *text* property of the view options, when the dialog opens. Remember to use *that* instead of *this* for code in a nested scopes when referring to the view. 
 
-Turn the textarea into a *LimitedTextarea* in the open event.
+Turn the text area into a *LimitedTextarea* in the open event.
 
-When the textarea closes the dialog should be destroyed and the root element of the view should be removed from the DOM. You call method on the dialog the following way: 
+When the dialog closes it should be destroyed and the root element of the view should be removed from the DOM. Tip: you call method on the dialog the following way: 
 
     el.dialog("method",[args...])
 
 Ensure that the DOM is cleaned properly when the dialog is closed to avoid memory leaks.
 
-Add a *Tweet* button to the dialog that retrieves the text of the textarea and creates a new Tweet on the homeTimeline collection. 
-Close the dialog afterwards. Remember to wait for the tweet to be retrieved from the server before adding it to the collection.
+Add a *Tweet* button to the dialog that retrieves the text of the text area and creates a new Tweet on the homeTimeline collection. 
+Close the dialog afterwards. Remember to wait for the tweet to be received from the server before adding it to the collection.
 
 Add a *Cancel* button to the dialog that closes this dialog.
 
-Finally set the title of the dialog to the title property of the options map.
+Finally set the title of the dialog to the *title* property of the options map.
 
 Refresh the page and see if you can reply and retweet.
 
@@ -561,7 +561,7 @@ Go to the next step by running:
 
 In this step you should add validation to the tweet model before it is send to the server. Read the documentation for the <a href="http://documentcloud.github.com/backbone/#Model-validate">validate method</a>, and add the validation method to the model. The validation should check that the text to send is no more than 140 characters.
 
-When you have added the validation method, change the `client/js/views/TweetEditor.js` view to highlight the textarea when an invalid model is submitted. Furthermore only clear the textarea when the submit was successful. You can be inspired by the way the `client/js/views/TweetEditorDialog.js` handles errors. 
+When you have added the validation method, change the `client/js/views/TweetEditor.js` view to highlight the text area when an invalid model is submitted. Furthermore only clear the text area when the submit was successful. You can be inspired by the way the `client/js/views/TweetEditorDialog.js` handles errors. 
 
 Go to the next step by running:
     
