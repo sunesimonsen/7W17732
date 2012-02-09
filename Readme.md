@@ -89,16 +89,14 @@ This will result in the following line it the browser log:
 
 jQuery is a JavaScript library for manipulating the HTML DOM in a browser independent way. 
 
-Open www.jayway.com in Firefox or Chrome. Try running the following lines in the developer console one by one. Open the console in Chrome by pressing CS-j and CS-k in Firefox.
+Open www.jayway.com in Firefox or Chrome. Try running the following lines in the developer console one by one. You can open the developer console in Chrome by pressing `CS-j` and `CS-k` in Firefox.
 
     $('.topNavigation a').css({color: 'pink'})
     $("h1 a").fadeOut("slow").fadeIn("slow")
     $('#siteBody .homePageBox .content').css({border: 'thick solid pink'})
     $('#siteBody .homePageBox .content h3:eq(1)').text(".:jQuery:.").css({color: 'red', textAlign: 'center', fontSize: '3em'});
 
-As you can see jQuery is a very powerful tool and is the basis for many JavaScript frameworks. 
-
-Let's just take a look at what is going on above. <b>$</b> is a reference to jQuery. We uses jQuery to select a group of elements to work on using a CSS3 selector. Then we instruct jQuery what to do with the selected elements.
+Let's just take a look at what is going on above. `$` is a reference to jQuery, that is uses to select a group of elements to work on using a CSS3 selector. When we have selected a group of element, we instruct jQuery what to do with the selected elements.
 
 So the statement below means: Select all links that is nested within an element with the css class *topNavigation* and change the text color to pink.
 
@@ -114,6 +112,8 @@ Here is a couple of selectors:
 There are more selectors, but these are the most important. You can find more information at http://api.jquery.com/category/selectors/
 
 This page shows the selectors in effect: http://codylindley.com/jqueryselectors/
+
+As you can see jQuery is a very powerful tool and is well worth learning. 
 
 ### Backbone.js ###
 
