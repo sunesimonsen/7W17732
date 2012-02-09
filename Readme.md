@@ -96,7 +96,7 @@ Open www.jayway.com in Firefox or Chrome. Try running the following lines in the
     $('#siteBody .homePageBox .content').css({border: 'thick solid pink'})
     $('#siteBody .homePageBox .content h3:eq(1)').text(".:jQuery:.").css({color: 'red', textAlign: 'center', fontSize: '3em'});
 
-Let's just take a look at what is going on above. `$` is a reference to jQuery, that is uses to select a group of elements to work on using a CSS3 selector. When we have selected a group of element, we instruct jQuery what to do with the selected elements.
+Let's just take a look at what is going on above. `$` is a reference to jQuery, that is uses to select a group of elements to work on using a CSS3 selector. When we have selected a group of element, we tell jQuery what to do with the selected elements.
 
 So the statement below means: Select all links that is nested within an element with the css class *topNavigation* and change the text color to pink.
 
@@ -117,7 +117,7 @@ As you can see jQuery is a very powerful tool and is well worth learning.
 
 ### Backbone.js ###
 
-jQuery is fine and all, but if you are going to make a larger JavaScript application it is just not sufficient. It is extremely easy to make spaghetti code, some might say it's a kind of a pasta machine. To take care of the overall structuring you can use a framework like <a href="http://documentcloud.github.com/backbone/">Backbone</a>. Backbone is a MVC framework, it is a little different than a usual MVC as the C stands for collections instead of controller. Backbone is very light weight and easy to understand. 
+jQuery is fine and all, but if you are going to make a larger JavaScript application it is just not sufficient. It is extremely easy to make spaghetti code with jQuery, some might say it's a kind of a pasta machine. To take care of the overall structuring of your application, you can use a framework like <a href="http://documentcloud.github.com/backbone/">Backbone</a>. Backbone is a MVC framework, it is a little different than a usual MVC as the C stands for collections instead of controller. Backbone is very light weight and easy to understand. 
 
 Backbone consist of different types of objects:
 
