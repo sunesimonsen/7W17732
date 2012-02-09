@@ -8,7 +8,7 @@ This is still work in progress and will be finished the very last minute. That i
 
 This lab requires some knowledge about <a href="https://developer.mozilla.org/en/JavaScript/A_re-introduction_to_JavaScript" title="JavaScript tutorial">JavaScript</a>. Skill in CSS and HTML would also help.
 
-You also need a Twitter account. If you don't want to mess with you existing account just create a new one. But make sure to follow a few people so you timeline will not be empty.
+You also need a Twitter account. If you don't want to mess with you existing account just create a new one, but make sure to follow a few people so you timeline will not be empty.
 
 It is a good idea to have the developer tools installed in you favorite browser.
 
@@ -18,7 +18,7 @@ Before arriving to the KHelg, please execute the following steps.
     cd 7W17732
     mvn clean install 
     
-When you arrive you should do a the following to synchronize with the latest changes. (If you already have initiated the lab, you'll need to run `mvn lab:reset` before):
+When you arrive you should do a the following to synchronize with the latest changes. (If you already have initiated the lab, you'll need to run `mvn lab:reset` first):
 
     cd 7W17732
     git pull 
@@ -26,7 +26,7 @@ When you arrive you should do a the following to synchronize with the latest cha
     
 ## Introduction ##
 
-I this lab we will explore how to build a larger single page JavaScript application. We will use a couple of different libraries that I think is appropriate for the job (That does not mean competitive alternatives does not exists). 
+In this lab we will explore how to build a larger single page JavaScript application. We will use a couple of different libraries that I think is appropriate for the job (That does not mean competitive alternatives does not exists). 
 
 JavaScript seems to be growing in popularity, but almost all the projects I have seen, that uses JavaScript to a larger extend, is suffering from structural problems. People kind of forget their good engineering practices when they get down and dirty with JavaScript. That is plain wrong, JavaScript is extremely dynamic and should be approached with caution.
 

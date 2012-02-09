@@ -8,7 +8,7 @@ define([
         },
 
         render : function() {
-            $(this.el).html( template );
+            $(this.el).html(template);
             this.$('button').button();
             @BEGIN_VERSION 6
             this.$('textarea').limitedTextarea();
