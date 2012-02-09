@@ -7,7 +7,7 @@ This is still work in progress and will be finished the very last minute. That i
 
 ## Prerequisite ##
 
-This lab requires some knowledge about JavaScript. Skill in CSS and HTML would also help.
+This lab requires some knowledge about <a href="https://developer.mozilla.org/en/JavaScript/A_re-introduction_to_JavaScript" title="JavaScript tutorial">JavaScript</a>. Skill in CSS and HTML would also help.
 
 You also need a Twitter account. If you don't want to mess with you existing account just create a new one. But be sure to follow a few people so you timeline will not be empty.
 
