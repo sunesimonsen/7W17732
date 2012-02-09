@@ -1,7 +1,6 @@
-
 ## Disclaimer ##
 
-This is still work in progress and will be finished the very last minute. That is just how I work :-). So spelling mistakes and the code actually working will be fixed later.
+This is still work in progress and will be finished the very last minute. That is just how I work :-). So spelling mistakes and other minor error will be fixed later.
 
 ---------------------------------------
 
@@ -9,9 +8,9 @@ This is still work in progress and will be finished the very last minute. That i
 
 This lab requires some knowledge about <a href="https://developer.mozilla.org/en/JavaScript/A_re-introduction_to_JavaScript" title="JavaScript tutorial">JavaScript</a>. Skill in CSS and HTML would also help.
 
-You also need a Twitter account. If you don't want to mess with you existing account just create a new one. But be sure to follow a few people so you timeline will not be empty.
+You also need a Twitter account. If you don't want to mess with you existing account just create a new one. But make sure to follow a few people so you timeline will not be empty.
 
-It is a good idea to have Firebug installed if you are using Firefox.
+It is a good idea to have the developer tools installed in you favorite browser.
 
 Before arriving to the KHelg, please execute the following steps. 
 
@@ -19,7 +18,7 @@ Before arriving to the KHelg, please execute the following steps.
     cd 7W17732
     mvn clean install 
     
-When you arrive you should do a the following to synchronize with the latest changes:
+When you arrive you should do a the following to synchronize with the latest changes. (If you already have initiated the lab, you'll need to run `mvn lab:reset` before):
 
     cd 7W17732
     git pull 
@@ -27,9 +26,9 @@ When you arrive you should do a the following to synchronize with the latest cha
     
 ## Introduction ##
 
-I this lab we will explore how to build a larger single page JavaScript application. We will use a couple of different libraries that I think is appropriate for the job (That does not mean competitive  alternatives does not exists). 
+I this lab we will explore how to build a larger single page JavaScript application. We will use a couple of different libraries that I think is appropriate for the job (That does not mean competitive alternatives does not exists). 
 
-JavaScript seems to be growing in popularity, but almost all the project I have seen that uses JavaScript to a larger extend, is suffering from structural problems. People kind of forget their good engineering practices when their get down and dirty with JavaScript. That is plain wrong, JavaScript is extremely dynamic and should be approached with caution.
+JavaScript seems to be growing in popularity, but almost all the projects I have seen, that uses JavaScript to a larger extend, is suffering from structural problems. People kind of forget their good engineering practices when they get down and dirty with JavaScript. That is plain wrong, JavaScript is extremely dynamic and should be approached with caution.
 
 We will build a Twitter client using the following technologies 
 
@@ -44,15 +43,15 @@ Each of the libraries will be explained below.
 
 The lab uses the <a href="https://github.com/jayway/maven-lab-plugin">maven-lab-plugin</a> and gradually progress towards a final Twitter client. 
 
-<strong>Upon finishing a step all of your changes will be replace by a correct solution</strong>. That means you don't have to complete a step correctly in order to advance to the next step.
+<strong>Upon finishing a step in the lab all of your changes will be replace by a correct solution</strong>. That means you don't have to complete a step correctly in order to advance to the next step.
 
 Hope you will have fun!
 
 ### Require.js ###
 
-<a href="http://requirejs.org/">Require.js</a> is a JavaScript you for asynchronously loading application modules and handling dependency management.
+<a href="http://requirejs.org/">Require.js</a> is a JavaScript library used for asynchronously loading application modules and handling dependency management.
 
-You define modules using the define method: 
+You define modules the following way using the *define* method: 
 
 file world.js:
 
@@ -80,7 +79,7 @@ File index.html
         </head>
     </html>
 
-When you open index.html in a browser require.js will load the file app.js, that in turn will require the <i>hello</i> module. The <i>hello</i> module requires the <i>world</i> modules. Require.js therefore downloads hello.js and world.js files and evaluates the define method of world.js. Then the define method of hello.js is evaluated  with the result of world.js as argument.  
+When you open index.html in a browser require.js will load the file app.js, that in turn will require the *hello* module. The *hello* module requires the *world* modules. Require.js therefore downloads hello.js and world.js files and evaluates the define method of world.js. Then the define method of hello.js is evaluated  with the result of world.js as argument.  
 
 This will result in the following line it the browser log:
 
@@ -88,8 +87,7 @@ This will result in the following line it the browser log:
 
 ### jQuery ###
 
-jQuery is a JavaScript libray for manipulating the HTML DOM in a browser independent way. 
-
+jQuery is a JavaScript library for manipulating the HTML DOM in a browser independent way. 
 
 Open www.jayway.com in Firefox or Chrome. Try running the following lines in the developer console one by one. Open the console in Chrome by pressing CS-j and CS-k in Firefox.
 
@@ -102,7 +100,7 @@ As you can see jQuery is a very powerful tool and is the basis for many JavaScri
 
 Let's just take a look at what is going on above. <b>$</b> is a reference to jQuery. We uses jQuery to select a group of elements to work on using a CSS3 selector. Then we instruct jQuery what to do with the selected elements.
 
-So the statement below means: Select all links that is nested within an element with the css class topNavigation and change the text color to pink.
+So the statement below means: Select all links that is nested within an element with the css class *topNavigation* and change the text color to pink.
 
     $('.topNavigation a').css({color: 'pink'})
 
@@ -146,7 +144,7 @@ Backbone make use of the utility and collection library <a href="http://undersco
 
 CSS is also one of those spaghetti creators. One could make use of something like <a href="http://sass-lang.com/">Sass</a> to get a better CSS structuring but to limit the technology overflow I left it out.
 
-One thing you always must do in a project that uses CSS is to use a stylesheet that resets all the different browser to a common ground. Blueprint provides such a stylesheet in addition to a grid layout that can also be usefull <a href="http://blueprintcss.org/">Blueprint</a>. A little more involved starting point is <a href="http://html5boilerplate.com/">Boilerplate</a> that is also good to read up on.
+One thing you always must do in a project that uses CSS is to use a stylesheet that resets all the different browser to a common ground. Blueprint provides such a stylesheet in addition to a grid layout that can also be useful <a href="http://blueprintcss.org/">Blueprint</a>. A little more involved starting point is <a href="http://html5boilerplate.com/">Boilerplate</a> that is also good to read up on.
 
 ## Start the lab ##
 
@@ -172,11 +170,11 @@ Open the file client/js/app.js and add the following lines to the end of the fil
 
 This will require the router module asynchronously and call the given function with the loaded module. In order to start listening for url changes we start the <a href="http://documentcloud.github.com/backbone/#History">Backbone history</a> tracking when the router is loaded.
 
-Start the application with the following command in a console an let it run in the backgroud. There should be no need to restart the server: 
+Start the application with the following command in a console an let it run in the background. There should be no need to restart the server: 
     
     mvn jetty:run
 
-Open the following adresse in a browser: 
+Open the following address in a browser: 
 
     http://0.0.0.0:8080/7W17732/
 
@@ -184,7 +182,7 @@ You should see the following message:
 
     You now have a running application
 
-Goto the next step by running:
+Go to the next step by running:
     
     mvn lab:next
 
@@ -192,25 +190,25 @@ Goto the next step by running:
 
 Open the file client/js/router in your editor. 
 
-Notice how the router is defined as a Require.js module that depends on the module <i>redirectIfNot</i>.
+Notice how the router is defined as a Require.js module that depends on the module *redirectIfNot*.
 
 In the module we create a Backbone router that is returned to other modules that depends on the router.
 
 I added a call to navigate to the home page, but the home page should only be accessible to authenticated users. So we will redirect the user to the login page if they are not authenticated.
 
-We will use the helper method <i>redirectIfNot</i> to make the redirect if the given constraints are not fulfilled. This method makes a call to the server in order to figure out the current state of the application and users the <a href="http://documentcloud.github.com/backbone/#Router-navigate">navigate</a> method on the router to handle the redirect.
+We will use the helper method *redirectIfNot* to make the redirect if the given constraints are not fulfilled. This method makes a call to the server in order to figure out the current state of the application and users the <a href="http://documentcloud.github.com/backbone/#Router-navigate">navigate</a> method on the router to handle the redirect.
 
 Move the following line in the home method: 
 
     $('body').append("<h2>This is the home screen</h2>");
 
-into the callback for the <i>redirectIfNot</i> method:
+into the callback for the *redirectIfNot* method:
 
     redirectIfNot(["authenticated"], function () {
         $('body').append("<h2>This is the home screen</h2>");
     });
 
-We also need to add a new route for <i>login</i> to the router that is connected to the <i>showLogin</i> method:
+We also need to add a new route for *login* to the router that is connected to the *showLogin* method:
 
     routes: {
         'home': 'home',
@@ -219,7 +217,7 @@ We also need to add a new route for <i>login</i> to the router that is connected
         '*actions': 'defaultAction'
     },
 
-Finally we need to implement the showLogin method. Instead of loading all the views when we load the main module, we can chose to load modules on demand. Add the following method to the router:
+Finally we need to implement the *showLogin* method. Instead of loading all the views when we load the main module, we can chose to load modules on demand. Add the following method to the router:
 
     showLogin: function(){
         require(['views/Login'], function (view) {
@@ -227,11 +225,11 @@ Finally we need to implement the showLogin method. Instead of loading all the vi
         });
     },
 
-Notice how we get the login view dependency in the callback method and call render on the view.
+Notice how we get the *login* view dependency in the callback method and call render on the view.
 
-When you refresh the browser you should be redirected to the login page.
+When you refresh the browser you should be redirected to the *login* page.
 
-Goto the next step by running:
+Go to the next step by running:
     
     mvn lab:next
 
@@ -241,9 +239,9 @@ Open the file client/views/Login.js in you editor.
 
 This module has a special dependency, that uses the Require.js <a href="http://requirejs.org/docs/api.html#text">text</a> plugin. This plugin is capable of loading text files as strings. This is really useful for loading html template files, and in this case the views/Login.html file.
 
-In the module we define a new <a href="http://documentcloud.github.com/backbone/#View">Backbone view</a> that is attacted to the element in the index.html page with the id <i>container</i>. In the <a href="http://documentcloud.github.com/backbone/#View-render">render</a> function for this view we replace the content of the root element with the loaded template.
+In the module we define a new <a href="http://documentcloud.github.com/backbone/#View">Backbone view</a> that is attacted to the element in the index.html page with the id *container*. In the <a href="http://documentcloud.github.com/backbone/#View-render">render</a> function for this view we replace the content of the root element with the loaded template.
 
-First of all let's change the Login button to a <a href="http://jqueryui.com/demos/button/">jQuery UI button</a> by added the following line to the render method. 
+First of all let's change the *Login* button to a <a href="http://jqueryui.com/demos/button/">jQuery UI button</a> by added the following line to the render method. 
 
     this.$('button').button();
 
@@ -251,7 +249,7 @@ Backbone provides us with a reference to jQuery that is relative to the root ele
 
     $('button', this.el).button();
 
-That means: find the button element in the root element of the view and turn it into a jQuery UI button.
+That means: find the button element in the root element of the view and turn it into a jQueryUI button.
 
 It is a really good idea to make almost all you jQuery code be relative to an element that is a close ancestor to the elements you would like to work on. That make the code much more modular and helps avoiding situations where different parts of the code affect other parts unexpectedly. The same can be said for CSS, always limit your styles as much as possible.
 
@@ -269,7 +267,7 @@ Add the following code to the events field.
         'click button' : 'click'
     }
     
-This binds the <i>click</i> event of the elements below the root element that matches the CSS selector <i>button</i> to the <i>click</i> method on this view.
+This binds the *click* event of the elements below the root element that matches the CSS selector *button* to the *click* method on this view.
 
 Now add a click method to the view: 
 
@@ -309,19 +307,19 @@ Added the following click method to the view:
         return false;
     }
 
-We <a href="http://api.jquery.com/serialize/">serialize</a> the form to be www-form-urlencoded and send it off. If the user was authenticated we redirect the router to <i>home</i>; otherwise we show an error.
+We <a href="http://api.jquery.com/serialize/">serialize</a> the form to be `www-form-urlencoded` and send it off. If the user was authenticated we redirect the router to *home*; otherwise we show an error.
 
-Take a look at the <i>setErrorMessage</i> method to see how jQuery calls can be chained together.
+Take a look at the *setErrorMessage* method to see how jQuery calls can be chained together.
 
 Try to log in with a wrong user name and password. Then you should see the error message.
 
-Then try to login with one of the users shown on the login box. You should be redirected to the Twitter connect page. Please connect to you Twitter account. 
+Then try to log in with one of the users shown on the *login* box. You should be redirected to the Twitter connect page. Please connect to you Twitter account. 
 
 When you are redirected to the home page you should see the following message: 
 
     Home - nothing to be seen here
 
-Goto the next step by running:
+Go to the next step by running:
     
     mvn lab:next
 
@@ -341,14 +339,14 @@ Now open the client/js/collections/HomeTimeline.js file in you editor.
 
 As you can see the module depends on the tweet model and defines a new <a href="http://documentcloud.github.com/backbone/#Collection">Backbone collection</a>.
 
-The first thing we need to specify is the model for the elements in the collection. Then we specify the url on the server that the collection maps to:
+The first thing we need to specify is the model for the elements in the collection. Then we specify the URL on the server that the collection maps to:
 
     var HomeTimeline = Backbone.Collection.extend({
         model: Tweet,
         url: 'twitter/timeline/home'
     });
 
-When the <a href="http://documentcloud.github.com/backbone/#Collection-fetch">fetch</a> method is called on the collection a HTTP GET will be issued to the url of the collection. For each element in the returned JSON response a model will be created. 
+When the <a href="http://documentcloud.github.com/backbone/#Collection-fetch">fetch</a> method is called on the collection a HTTP GET will be issued to the *url* of the collection. For each element in the returned JSON response a model will be created. 
 
 There is just one problem, the server does not return a JSON array but a root element. So we need to add a parse method to the collection to retrieve the array:
 
@@ -362,16 +360,16 @@ Finally we want to sort the tweets by their creation time:
         return -tweet.get("createdAt");
     }
 
-Now we just need to render the tweets. Open the client/js/views/TimelineView.js file in your editor.
+Now we just need to render the tweets. Open the `client/js/views/TimelineView.js` file in your editor.
 
-First of all <a href="http://documentcloud.github.com/backbone/#Events-on">bind</a> the <i>reset</i> event on the timeTimeline collection to the render method and call fetch on the collection: 
+First of all <a href="http://documentcloud.github.com/backbone/#Events-on">bind</a> the *reset* event on the *timeTimeline* collection to the render method and call fetch on the collection: 
 
     initialize: function() {
         homeTimeline.on('reset', this.render, this);
         homeTimeline.fetch();
     }
     
-When the elements are fetched from the server the <i>reset</i> event will be triggered on the collection and the render method will be called.
+When the elements are fetched from the server the *reset* event will be triggered on the collection and the render method will be called.
 
 We can then in the render method display the tweets on the view. Add the following code to the render method after the template has been inserted in the root element.
 
@@ -381,9 +379,9 @@ We can then in the render method display the tweets on the view. Add the followi
         timeline.append(view.render());
     });
     
-First we find the ul element just below the root element. Notice it is important to be quite strict when selecting elements in views that contains sub views. Then we treverse all the elements of the home timeline collection, create a new TweetView for each model and append the rendered view to the timeline element.
+First we find the *ul* element just below the root element. Notice it is important to be quite strict when selecting elements in views that contains sub views. Then we traverse all the elements of the home timeline collection, create a new *TweetView* for each model and append the rendered view to the timeline element.
 
-Finally we need to implement the TweetView. Open the client/js/TweetView.js file in your editor.
+Finally we need to implement the *TweetView*. Open the client/js/TweetView.js file in your editor.
 
 We will use the <a href="http://underscorejs.org/#template">template</a> method of the <a href="http://underscorejs.org/">Underscore.js</a> library to render the tweet views. 
 
@@ -393,25 +391,25 @@ We would like to compile the template against a JSON version of the model. That 
 
     $(this.el).html(_.template(template, this.model.toJSON()));
 
-This line turns the model into JSON compiles the template against the data using the Underscore.js library and places the html in the root element of the view. 
+This line turns the model into JSON compiles the template against the data using the Underscore.js library and places the HTML in the root element of the view. 
 
 If you refresh the home page, you should see your home timeline.
 
-Goto the next step by running:
+Go to the next step by running:
     
     mvn lab:next
     
 ## Step 4: Tweeting your first tweet ##
 
-We will start by adding support in the timeline view to listen for <i>add</i> events on the home timeline collection.
+We will start by adding support in the timeline view to listen for *add* events on the home timeline collection.
 
 Open the client/js/TimelineView.js and add the following line to the top of the initialize method.
 
     homeTimeline.on('add', this.add, this);
 
-Now when new models are added to the home timeline collection the <i>add</i> method on the view will be called.
+Now when new models are added to the home timeline collection the *add* method on the view will be called.
 
-In the <i>add</i> method we will prepend a new tweet view to the timeline. 
+In the *add* method we will prepend a new tweet view to the timeline. 
 
     var view = new TweetView({model: tweet});
     var tweetEl = $(view.render());
@@ -419,11 +417,11 @@ In the <i>add</i> method we will prepend a new tweet view to the timeline.
   
 First we create the view and render it. In order to get a nice slide down effect, we hide the newly created view prepend it to the timeline and call the slide down effect on the element.
 
-Now we only need to send a tweet to server when the user click on the <i>Tweet</i> button in the tweet editor.
+Now we only need to send a tweet to server when the user click on the *Tweet* button in the tweet editor.
 
 Open client/js/views/TweetEditor.js in you editor.
 
-In the <i>tweet</i> method add a tweet to the home timeline collection using the <a href="http://documentcloud.github.com/backbone/#Collection-create">create method</a>.
+In the *tweet* method add a tweet to the home timeline collection using the <a href="http://documentcloud.github.com/backbone/#Collection-create">create method</a>.
 
     var textArea = this.$('textarea');
     homeTimeline.create({
@@ -432,11 +430,11 @@ In the <i>tweet</i> method add a tweet to the home timeline collection using the
     
     textArea.val('');
     
-We retrieve the value of the textarea, create a data map with the value and send it of to the server using the create method. We instruct the collection to wait with adding the tweet to the collection until the created version has been retrieved from the server. Finally we clear the textarea.
+We retrieve the value of the text area, create a data map with the value and send it of to the server using the create method. We instruct the collection to wait with adding the tweet to the collection until the created version has been retrieved from the server. Finally we clear the text area.
 
 Refresh the page and try tweeting something.
 
-Goto the next step by running:
+Go to the next step by running:
     
     mvn lab:next
     
@@ -444,15 +442,15 @@ Goto the next step by running:
 
 Open the client/js/components/LimitedTextarea.js file in you editor.
 
-Notice that this file is not a require.js module. It is included directly in index.html. That is because jQuery has it's own namespace mechanism.
+Notice that this file is not a require.js module. It is included directly in index.html. That is because jQuery has it's own *namespace* mechanism.
 
-I this step we are going to create a <a href="http://jqueryui.com/demos/widget/">jQuery UI widget</a> that will enrich a textfield with a max length indicator. It is a little involved, so I'll only run through the important aspects.
+I this step we are going to create a <a href="http://jqueryui.com/demos/widget/">jQuery UI widget</a> that will enrich a text field with a max length indicator. It is a little involved, so I'll only run through the important aspects.
 
 Notice that this widget is not complete, error handling and destroy methods are not implemented.
 
-The widget will read the maxlength attribute of the target textarea, if it is not provided it will take the length from the options map. The maxlength attribute is removed to allow longer text then the max length, the validation should take care of the ensuring valid data. Then it will take the target textarea and surround it with a div containing an indicator element. This indicator element will be place in the bottom left cornor of the textarea and be updated on key presses.
+The widget will read the *maxlength* attribute of the target textarea, if it is not provided it will take the length from the options map. The maxlength attribute is removed to allow longer text then the max length, the validation should take care of the ensuring valid data. Then it will take the target textarea and surround it with a div containing an indicator element. This indicator element will be place in the bottom left cornor of the textarea and be updated on key presses.
 
-All code should be added to the <i>_create</i> method that will be called when the widget is created.
+All code should be added to the *_create* method that will be called when the widget is created.
 
 We can retrieve the max length and delete the attribute on the textarea the following way:
 
@@ -483,7 +481,7 @@ This will create the following structure:
         </p>
     </div>
     
-Then we will append this structure just after the target textarea, and the replace the textarea in the structure with the target textarea:
+Then we will append this structure just after the target textarea, and the replace the textarea in the structure with the target text area:
 
     component.insertAfter(textarea);
     component.find('textarea').replaceWith(textarea);
@@ -516,7 +514,7 @@ No we have a working widget, let's attach it to the textarea in the render metho
     
 Refresh the page and type something in the textarea area.
 
-Goto the next step by running:
+Go to the next step by running:
     
     mvn lab:next
 
@@ -532,9 +530,9 @@ The text of the retweet should be something like:
     
 Open client/js/views/TweetEditorDialog.js to implement the dialog. Use the documentation on the <a href="http://jqueryui.com/demos/dialog/">jQuery UI page</a> to implement this step.
 
-Set the value of the textarea under the root element to the text property of the view options when the dialog opens. Remember to use <i>that</i> instead of <i>this</i> for code in a nested scopes when refering to the view. 
+Set the value of the textarea under the root element to the text property of the view options when the dialog opens. Remember to use *that* instead of *this* for code in a nested scopes when refering to the view. 
 
-Turn the textarea into a <i>LimitedTextarea</i> in the open event.
+Turn the textarea into a *LimitedTextarea* in the open event.
 
 When the textarea closes the dialog should be destroyed and the root element of the view should be removed from the DOM. You call method on the dialog the following way: 
 
@@ -542,16 +540,16 @@ When the textarea closes the dialog should be destroyed and the root element of 
 
 Ensure that the DOM is cleaned properly when the dialog is closed to avoid memory leaks.
 
-Add a </i>Tweet</i> button to the dialog that retrieves the text of the textarea and creates a new Tweet on the homeTimeline collection. 
+Add a *Tweet* button to the dialog that retrieves the text of the textarea and creates a new Tweet on the homeTimeline collection. 
 Close the dialog afterwards. Remember to wait for the tweet to be retrieved from the server before adding it to the collection.
 
-Add a <i>Cancel</i> button to the dialog that closes this dialog.
+Add a *Cancel* button to the dialog that closes this dialog.
 
 Finally set the title of the dialog to the title property of the options map.
 
 Refresh the page and see if you can reply and retweet.
 
-Goto the next step by running:
+Go to the next step by running:
     
     mvn lab:next
 
@@ -561,7 +559,7 @@ In this step you should add validation to the tweet model before it is send to t
 
 When you have added the validation method, change the client/js/views/TweetEditor.js view to highlight the textarea when an invalid model is submitted. Furthermore only clear the textarea when the submit was successful. You can be inspired by the way the client/js/views/TweetEditorDialog.js handles errors. 
 
-Goto the next step by running:
+Go to the next step by running:
     
     mvn lab:next
     
