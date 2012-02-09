@@ -79,7 +79,7 @@ File index.html
         </head>
     </html>
 
-When you open index.html in a browser require.js will load the file app.js, that in turn will require the *hello* module. The *hello* module requires the *world* modules. Require.js therefore downloads hello.js and world.js files and evaluates the define method of world.js. Then the define method of hello.js is evaluated  with the result of world.js as argument.  
+When you open index.html in a browser *Require.js* will load the file app.js, that in turn will require the *hello* module. The *hello* module requires the *world* module, *Require.js* therefore downloads `hello.js` and `world.js` files and evaluates the define method of `world.js`. Then the *define* method of hello.js is evaluated  with the result of `world.js` as argument.  
 
 This will result in the following line it the browser log:
 
