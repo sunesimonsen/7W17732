@@ -28,7 +28,7 @@ When you arrive you should do a the following to synchronize with the latest cha
 
 In this lab we will explore how to build a larger single page JavaScript application. We will use a couple of different libraries that I think is appropriate for the job (That does not mean competitive alternatives does not exists). 
 
-JavaScript seems to be growing in popularity, but almost all the projects I have seen, that uses JavaScript to a larger extend, is suffering from structural problems. People kind of forget their good engineering practices when they get down and dirty with JavaScript. That is plain wrong, JavaScript is extremely dynamic and should be approached with caution.
+JavaScript seems to be growing in popularity, but almost all the projects I have seen, that uses JavaScript to a larger extend, is suffering from structural problems. People kind of forget their good engineering practices when they get down and dirty with JavaScript. That is just plain wrong; JavaScript is extremely dynamic and should be approached with caution.
 
 We will build a Twitter client using the following technologies 
 
@@ -41,9 +41,9 @@ We will build a Twitter client using the following technologies
 
 Each of the libraries will be explained below.
 
-The lab uses the <a href="https://github.com/jayway/maven-lab-plugin">maven-lab-plugin</a> and gradually progress towards a final Twitter client. 
+The lab uses the <a href="https://github.com/jayway/maven-lab-plugin">maven-lab-plugin</a> and gradually progress towards a more or less working Twitter client. 
 
-<strong>Upon finishing a step in the lab all of your changes will be replace by a correct solution</strong>. That means you don't have to complete a step correctly in order to advance to the next step.
+**Upon finishing a step in the lab all of your changes will be replace by a correct solution**. That means you don't have to complete a step correctly in order to advance to the next step.
 
 Hope you will have fun!
 
@@ -53,21 +53,21 @@ Hope you will have fun!
 
 You define modules the following way using the *define* method: 
 
-file world.js:
+File `modules/world.js`:
 
     define([], function () {
         return "World";
     });
 
-File hello.js
+File `modules/hello.js`:
 
-    define(['world'], function (world) {
+    define(['modules/world'], function (world) {
         return "Hello " + world;
     });
     
-File app.js
+File `app.js`:
 
-    require(["hello"], function (hello) {
+    require(["modules/hello"], function (hello) {
         console.log(hello);
     });
     
