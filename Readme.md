@@ -117,34 +117,34 @@ As you can see jQuery is a very powerful tool and is well worth learning.
 
 ### Backbone.js ###
 
-jQuery is fine and all, but if you are going to make a larger JavaScript application it is just not sufficient. It is extremely easy to make spaghetti code with jQuery, some might say it's a kind of a pasta machine. To take care of the overall structuring of your application, you can use a framework like <a href="http://documentcloud.github.com/backbone/">Backbone</a>. Backbone is a MVC framework, it is a little different than a usual MVC as the C stands for collections instead of controller. Backbone is very light weight and easy to understand. 
+jQuery is fine and all, but if you are going to make a larger JavaScript application it is just not sufficient. It is extremely easy to make spaghetti code with jQuery, some might say it's a kind of a pasta machine. To take care of the overall structuring of your application, you can use a framework like <a href="http://documentcloud.github.com/backbone/">Backbone</a>. Backbone is a MVC framework, it is a little different than a usual MVC as the C stands for collections instead of controller. Backbone is very light weight and easy to understand; therefore I think it is a good choice for your applications. 
 
 Backbone consist of different types of objects:
 
 * Router - routing page fragments to handlers
 * View - controlling a part of the web page
 * Collection - maps a collections of models to a collection resource on the server
-* Model - represent a model on the server
+* Model - represent a resource on the server
 
-A request is received by the router, that in turn invokes a view to display. The view can consist of any number of sub views. Each of the views can be bound to a model or a collection. 
+When a request is received by the router, it choices an action to execute. Such an action could for example be to render a view. The view can consist of any number of sub views that each have connected models. The views can listen for event from the models, collections and DOM elements, and when a model is updated all the views that listen for events on that model are notified.
 
-The views can listen for event from the models, collections and DOM elements. When a model is updated all the views that listen for events on that model are notified.
-
-We will go much more in details with Backbone in the lab.
+We will go much more into details with Backbone in the lab.
 
 ### jQueryUI ###
 
-<a href="http://jqueryui.com/">jQueryUI</a> makes available a lot of useful components, with very nice theme framework. A lot of times standard components will not be enough to solve your problem, to handle that, jQuery provides a widget factory to create your own custom UI components. We will look into how that works later in the lab.
+<a href="http://jqueryui.com/">jQueryUI</a> makes available a lot of useful components, with very nice theme framework. When standard components are not sufficient to solve your problems, jQuery provides a widget factory to create your own custom UI components. We will look into how that works later in the lab.
 
 ### Underscore.js ###
 
-Backbone make use of the utility and collection library <a href="http://underscorejs.org/">Underscore.js</a> that by it self is a very nice library, but in conjunction with Backbone is just plain awesome. We will mainly make you of Underscores templating capabilities.
+Backbone make use of the utility and collection library <a href="http://underscorejs.org/">Underscore.js</a> which by it self is a very nice library, but in conjunction with Backbone is just plain awesome. We will mainly make use of Underscores templating capabilities.
 
 ### Blueprint.css ###
 
-CSS is also one of those spaghetti creators. One could make use of something like <a href="http://sass-lang.com/">Sass</a> to get a better CSS structuring but to limit the technology overflow I left it out.
+CSS is also one of those spaghetti creators. To approach the CSS spaghetti problem, one could make use of something like <a href="http://sass-lang.com/">Sass</a> to get a better structuring, but to limit the technology overflow I left it out.
 
-One thing you always must do in a project that uses CSS is to use a stylesheet that resets all the different browser to a common ground. Blueprint provides such a stylesheet in addition to a grid layout that can also be useful <a href="http://blueprintcss.org/">Blueprint</a>. A little more involved starting point is <a href="http://html5boilerplate.com/">Boilerplate</a> that is also good to read up on.
+One thing you always must do in a project that uses CSS, is to use a style sheet that resets all the different browser to a common ground. <a href="http://blueprintcss.org/">Blueprint</a> provides such a style sheet in addition to a grid layout that can also be useful. 
+
+A little more involved starting point for a project is <a href="http://html5boilerplate.com/">Boilerplate</a>, that is also good to read up on.
 
 ## Start the lab ##
 
@@ -158,7 +158,7 @@ Run the following command in the console to start the lab:
 
 In this step we will start the application by requiring the Application <a href="http://documentcloud.github.com/backbone/#Router">Backbone Router</a> using Require.js.
 
-Notice that index.html has a reference to require.js with a data-main attribute pointing to the application entry point. 
+Notice that *index.html* has a reference to require.js with a *data-main* attribute pointing to the application entry point. 
 
     <script data-main="resources/js/app" src="resources/jslibs/require.js"></script>
 
@@ -168,9 +168,11 @@ Open the file client/js/app.js and add the following lines to the end of the fil
         Backbone.history.start();
     });
 
-This will require the router module asynchronously and call the given function with the loaded module. In order to start listening for url changes we start the <a href="http://documentcloud.github.com/backbone/#History">Backbone history</a> tracking when the router is loaded.
+This will require the router module asynchronously and call the given function with the loaded module. 
 
-Start the application with the following command in a console an let it run in the background. There should be no need to restart the server: 
+In order to start listening for URL changes we start the <a href="http://documentcloud.github.com/backbone/#History">Backbone history</a> tracking when the router is loaded.
+
+Start the application with the following command in a console, and let it run in the background. There should be no need to restart the server: 
     
     mvn jetty:run
 
@@ -188,15 +190,15 @@ Go to the next step by running:
 
 ## Step 1: Redirect to login if not authenticated ##
 
-Open the file client/js/router in your editor. 
+Open the file `client/js/router` in your editor. 
 
 Notice how the router is defined as a Require.js module that depends on the module *redirectIfNot*.
 
 In the module we create a Backbone router that is returned to other modules that depends on the router.
 
-I added a call to navigate to the home page, but the home page should only be accessible to authenticated users. So we will redirect the user to the login page if they are not authenticated.
+I added a call to navigate to the home page from the default route, but the home page should only be accessible to authenticated users. So we will redirect the user to the login page if they are not authenticated.
 
-We will use the helper method *redirectIfNot* to make the redirect if the given constraints are not fulfilled. This method makes a call to the server in order to figure out the current state of the application and users the <a href="http://documentcloud.github.com/backbone/#Router-navigate">navigate</a> method on the router to handle the redirect.
+We will use the helper method *redirectIfNot* to make the redirect if the given constraints are not fulfilled. This method makes a call to the server in order to figure out the current state of the application, and users the <a href="http://documentcloud.github.com/backbone/#Router-navigate">navigate</a> method on the router to handle the redirect.
 
 Move the following line in the home method: 
 
@@ -237,7 +239,7 @@ Go to the next step by running:
 
 ## Step 2: Login to application ##
 
-Open the file client/views/Login.js in you editor.
+Open the file `client/views/Login.js` in you editor.
 
 This module has a special dependency, that uses the Require.js <a href="http://requirejs.org/docs/api.html#text">text</a> plugin. This plugin is capable of loading text files as strings. This is really useful for loading html template files, and in this case the views/Login.html file.
 
@@ -331,13 +333,13 @@ I this step we will use Backbone's collections and models to retrieve tweets fro
 
 First we need to implement the model for a tweet.
 
-Open the file client/js/models/Tweet.js in your editor.
+Open the file `client/js/models/Tweet.js` in your editor.
 
 Making a new model is easy. A <a href="http://documentcloud.github.com/backbone/#Model">Backbone model</a> provides sensible defaults and a lot of features out of the box. 
 
 You don't actually need to change anything here, because the defaults are sufficient. But notice that we return the prototype for a tweet instead of a new instance of the tweet. That is because we need to create multiple instances of the tweet model.
 
-Now open the client/js/collections/HomeTimeline.js file in you editor.
+Now open the `client/js/collections/HomeTimeline.js` file in you editor.
 
 As you can see the module depends on the tweet model and defines a new <a href="http://documentcloud.github.com/backbone/#Collection">Backbone collection</a>.
 
@@ -383,11 +385,11 @@ We can then in the render method display the tweets on the view. Add the followi
     
 First we find the *ul* element just below the root element. Notice it is important to be quite strict when selecting elements in views that contains sub views. Then we traverse all the elements of the home timeline collection, create a new *TweetView* for each model and append the rendered view to the timeline element.
 
-Finally we need to implement the *TweetView*. Open the client/js/TweetView.js file in your editor.
+Finally we need to implement the *TweetView*. Open the `client/js/TweetView.js` file in your editor.
 
 We will use the <a href="http://underscorejs.org/#template">template</a> method of the <a href="http://underscorejs.org/">Underscore.js</a> library to render the tweet views. 
 
-Take a look at the file client/views/TweetView.html and notice that it contains inline JavaScript code.
+Take a look at the file `client/views/TweetView.html` and notice that it contains inline JavaScript code.
 
 We would like to compile the template against a JSON version of the model. That is achieved by placing the following code in the render method:
 
@@ -405,7 +407,7 @@ Go to the next step by running:
 
 We will start by adding support in the timeline view to listen for *add* events on the home timeline collection.
 
-Open the client/js/TimelineView.js and add the following line to the top of the initialize method.
+Open the `client/js/TimelineView.js` and add the following line to the top of the initialize method.
 
     homeTimeline.on('add', this.add, this);
 
@@ -421,7 +423,7 @@ First we create the view and render it. In order to get a nice slide down effect
 
 Now we only need to send a tweet to server when the user click on the *Tweet* button in the tweet editor.
 
-Open client/js/views/TweetEditor.js in you editor.
+Open `client/js/views/TweetEditor.js` in you editor.
 
 In the *tweet* method add a tweet to the home timeline collection using the <a href="http://documentcloud.github.com/backbone/#Collection-create">create method</a>.
 
@@ -442,7 +444,7 @@ Go to the next step by running:
     
 ## Step 5: Creating a custom jQuery UI widget ##
 
-Open the client/js/components/LimitedTextarea.js file in you editor.
+Open the `client/js/components/LimitedTextarea.js` file in you editor.
 
 Notice that this file is not a require.js module. It is included directly in index.html. That is because jQuery has it's own *namespace* mechanism.
 
@@ -510,7 +512,7 @@ Finally we update the indicator:
 
     updateIndicator();
 
-No we have a working widget, let's attach it to the textarea in the render method of client/js/views/TweetEditor.js:
+No we have a working widget, let's attach it to the textarea in the render method of `client/js/views/TweetEditor.js`:
 
     this.$('textarea').limitedTextarea();
     
@@ -524,13 +526,13 @@ Go to the next step by running:
 
 I have added a reply and a retweet link to the TweetView. When click they should open a dialog with the appropriate text.
 
-Take a look at the methods in client/js/views/TweetView.js and implement the retweet function. 
+Take a look at the methods in `client/js/views/TweetView.js` and implement the retweet function. 
 
 The text of the retweet should be something like: 
     
     "RT @{fromUser}: {text}"
     
-Open client/js/views/TweetEditorDialog.js to implement the dialog. Use the documentation on the <a href="http://jqueryui.com/demos/dialog/">jQuery UI page</a> to implement this step.
+Open `client/js/views/TweetEditorDialog.js` to implement the dialog. Use the documentation on the <a href="http://jqueryui.com/demos/dialog/">jQuery UI page</a> to implement this step.
 
 Set the value of the textarea under the root element to the text property of the view options when the dialog opens. Remember to use *that* instead of *this* for code in a nested scopes when refering to the view. 
 
@@ -559,7 +561,7 @@ Go to the next step by running:
 
 In this step you should add validation to the tweet model before it is send to the server. Read the documentation for the <a href="http://documentcloud.github.com/backbone/#Model-validate">validate method</a>, and add the validation method to the model. The validation should check that the text to send is no more than 140 characters.
 
-When you have added the validation method, change the client/js/views/TweetEditor.js view to highlight the textarea when an invalid model is submitted. Furthermore only clear the textarea when the submit was successful. You can be inspired by the way the client/js/views/TweetEditorDialog.js handles errors. 
+When you have added the validation method, change the `client/js/views/TweetEditor.js` view to highlight the textarea when an invalid model is submitted. Furthermore only clear the textarea when the submit was successful. You can be inspired by the way the `client/js/views/TweetEditorDialog.js` handles errors. 
 
 Go to the next step by running:
     
