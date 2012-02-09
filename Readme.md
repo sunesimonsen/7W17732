@@ -259,7 +259,7 @@ Now let's add a click handler for the button. With plain jQuery would you just a
         ...
     });
 
-But as this is really common Backbone support adding event handlers to elements below the root element in an easy way.
+But as this is really common Backbone support adding event handlers to elements below the root element of a view in an easy way.
 
 Add the following code to the events field.
 

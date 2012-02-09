@@ -13,8 +13,10 @@ define([
             // Default
             '*actions': 'defaultAction'
         },
+
         @BEGIN_VERSION 1
         home : function () {
+            this.clearContainer();
             @BEGIN_VERSION_ONLY 1
             $('body').append("<h2>This is the home screen</h2>");
             @END_VERSION_ONLY 1
@@ -29,12 +31,14 @@ define([
         @END_VERSION 1
         @BEGIN_VERSION 2
         showLogin: function(){
+            this.clearContainer();
             require(['views/Login'], function (view) {
                 view.render();
             });
         },
 
         showConnect : function () {
+            this.clearContainer();
             redirectIfNot(["authenticated"], function () {
                 require(['views/Connect'], function (view) {
                     view.render();
@@ -49,6 +53,10 @@ define([
             @BEGIN_VERSION 1
             this.navigate("home", true);
             @END_VERSION 1
+        },
+
+        clearContainer : function () {
+            $('#container').die().unbind().empty();
         }
     });
     
