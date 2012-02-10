@@ -1,9 +1,3 @@
-## Disclaimer ##
-
-This is still work in progress and will be finished the very last minute. That is just how I work :-). So spelling mistakes and other minor error will be fixed later.
-
----------------------------------------
-
 ## Prerequisite ##
 
 This lab requires some knowledge about <a href="https://developer.mozilla.org/en/JavaScript/A_re-introduction_to_JavaScript" title="JavaScript tutorial">JavaScript</a>. Skill in CSS and HTML would also help.
@@ -222,6 +216,7 @@ We also need to add a new route *login* to the router. The *login* route should 
 Finally we need to implement the *showLogin* method. Instead of loading all the views when we load the main module, we can chose to load modules on demand. Add the following method to the router:
 
     showLogin: function(){
+        this.clearContainer();
         require(['views/Login'], function (view) {
             view.render();
         });
