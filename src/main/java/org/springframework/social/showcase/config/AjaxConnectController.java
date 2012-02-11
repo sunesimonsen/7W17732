@@ -20,7 +20,7 @@ public class AjaxConnectController extends ConnectController {
 	@Override
 	public RedirectView oauth1Callback(String providerId,
 			NativeWebRequest request) {
-		RedirectView oauth1Callback = super.oauth1Callback(providerId, request);
+		RedirectView oauth1Callback = super.oauth1Callback("twitter", request);
 		oauth1Callback.setUrl("/");
 		return oauth1Callback;
 	}
