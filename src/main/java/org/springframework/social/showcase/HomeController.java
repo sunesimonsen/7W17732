@@ -56,7 +56,7 @@ public class HomeController {
 	public Map<String,Object> home() {
 		Map<String,Object> result = Maps.newHashMap();
 		result.put("authenticated", SignInUtils.isSignedIn());
-		result.put("connected", isConnectToTwitter());
+		result.put("connected", true);
 		return result;
 	}
 	

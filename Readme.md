@@ -194,11 +194,11 @@ I added a call to navigate to the home page from the default route, but the home
 
 We will use the helper method *redirectIfNot* to make the redirect if the given constraints are not fulfilled. This method makes a call to the server in order to figure out the current state of the application, and users the <a href="http://documentcloud.github.com/backbone/#Router-navigate">navigate</a> method on the router to handle the redirect.
 
-Move the following line in the home method: 
+Replace the following line in the home method: 
 
     $('body').append("<h2>This is the home screen</h2>");
 
-into the callback for the *redirectIfNot* method:
+with the following lines to 
 
     redirectIfNot(["authenticated"], function () {
         $('body').append("<h2>This is the home screen</h2>");
